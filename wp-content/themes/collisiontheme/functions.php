@@ -587,20 +587,14 @@ add_filter( 'wp_nav_menu_args', 'slug_provide_walker_instance', 1001 );*/
     /*  add active class in the anchor */
 
 
+add_filter('nav_menu_css_class' , 'special_nav_class' , 10 , 2);
 
-function add_class_to_href( $classes, $item ) {
-
-    if ( (in_array('current_page_item', $item->classes)) || (in_array('current-menu-item', $item->classes)) || (in_array('current-menu-ancestor',$item->classes)) ) {
-
-        $classes['class'] = 'active';
-
-    }
-
-    return $classes;
-
+function special_nav_class ($classes, $item) {
+  if (in_array('current-menu-item', $classes) ){
+    $classes[] = 'current ';
+  }
+  return $classes;
 }
-
-add_filter( 'nav_menu_link_attributes', 'add_class_to_href', 10, 2 );
 
 
 

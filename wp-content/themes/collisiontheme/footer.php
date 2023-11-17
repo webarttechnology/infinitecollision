@@ -1,10 +1,15 @@
 
 <?php
 $pageid = get_id_by_slug('site-general-settings');
- $socialrows = CFS()->get( 'social_loop',$pageid ); */
+ 
+ $socialrows = CFS()->get('social_loop',$pageid );
 
 
-  <?php        $allclients = CFS()->get( 'client_repeat',$pageid  ); ?>
+  $allclients = CFS()->get( 'clients_repeat',$pageid  ); 
+
+//echo '<pre>'; print_r($allclients); echo '</pre>';
+
+  ?>
 
 
 
@@ -15,7 +20,13 @@ $pageid = get_id_by_slug('site-general-settings');
                 <ul class="sponsors-carousel owl-carousel owl-theme">
                     <?php foreach($allclients as $eachclient){  ?>
                 
-    <li class="slide-item"><figure class="image-box"><a href="<?php echo $eachclient['client_link']; ?>"><img src="<?php echo $eachclient['     client_logo']; ?>" alt=""></a></figure></li>
+    <li class="slide-item">
+        <figure class="image-box">
+            <a href="<?php echo $eachclient['client_link']; ?>">
+              <img src="<?php echo $eachclient['client_logo']; ?>" alt="">
+           </a>
+       </figure>
+     </li>
                 <?php } ?>
                     
                 </ul>

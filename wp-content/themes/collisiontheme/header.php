@@ -35,7 +35,10 @@
  <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 <div class="page-wrapper">
+<?php
+$pageid = get_id_by_slug('site-general-settings');
 
+ ?>
     <!-- Preloader -->
     <div class="preloader"></div>
 
@@ -53,35 +56,37 @@
                     </div>
                     <div class="top-right clearfix">
                         <ul class="social-icon-one clearfix">
-                            <li><a href="#"><span class="fab fa-facebook-f"></span></a></li>
-                            <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                            <li><a href="#"><span class="fab fa-google-plus-g"></span></a></li>
-                            <li><a href="#"><span class="fab fa-pinterest"></span></a></li>
-                            <li><a href="#"><span class="fab fa-dribbble"></span></a></li>
+                            <li><a href="<?php echo get_field('facebook',$pageid); ?>"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="<?php echo get_field('twitter',$pageid); ?>"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="<?php echo get_field('pinterest',$pageid); ?>"><i class="fab fa-pinterest"></i></a></li>
+                                    <li><a href="<?php echo get_field('dribble',$pageid); ?>"><i class="fab fa-dribbble"></i></a></li>
                         </ul>
                         <div class="call-btn">
-                            <a href="#">Book Now</a>
+                            <a href="<?php echo get_site_url(); ?>/services">Book Now</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <!-- End Header Top -->
+<?php
+$generalpageid = get_id_by_slug('site-general-settings');
 
+ ?>
         <!--Header-Upper-->
         <div class="header-upper">
             <div class="auto-container">
                 <div class="clearfix">
                     <div class="pull-left logo-outer">
-                        <div class="logo"><h3><a href="index.php">Logo here</a></h3></div>
+                        <div class="logo"><h3><a href="<?php echo get_site_url(); ?>">Logo here</a></h3></div>
                     </div>
                     <div class="pull-right upper-right clearfix">
                         <!--Info Box-->
                         <div class="upper-column info-box">
                             <div class="icon-box"><span class="flaticon-home"></span></div>
                             <ul>
-                                <li><strong>13AH, San Francisco,</strong></li>
-                                <li>New york, United States</li>
+                                <li><?php echo get_field('address',$generalpageid); ?></li>
+                                
                             </ul>
 
                         </div>
@@ -90,7 +95,7 @@
                             <div class="icon-box"><span class="flaticon-mail-1"></span></div>
                             <ul>
                                 <li><strong>Send your mail at</strong></li>
-                                <li><a href="#">Construct@support.com</a></li>
+                                <li><a href="mailto:<?php echo get_field('email',$generalpageid); ?>"><?php echo get_field('email',$generalpageid); ?></a></li>
                             </ul>
                         </div>
 
@@ -99,7 +104,7 @@
                             <div class="icon-box"><span class="flaticon-clock"></span></div>
                             <ul>
                                 <li><strong>Working Hours</strong></li>
-                                <li>Mon-Sat:9.30am to 7.00pm</li>
+                                <li> <?php echo get_field('workshop_timings',$generalpageid); ?></li>
                             </ul>
                         </div>
                     </div>
@@ -124,35 +129,23 @@
                         </div>
 
 
-                        <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
-                            <ul class="navigation clearfix">
-                                <li class="current"><a href="index.php">Home</a>
+                 
+                           <?php
+                                        wp_nav_menu(array(
+                                            'menu' => 'main menu',
+                                            'items_wrap' => '<ul class="navigation clearfix">%3$s</ul>',
+                                            'container_class' =>'navbar-collapse collapse clearfix',
+                                            'container_id' =>'navbarSupportedContent',
                                    
-                                </li>
-                                <li ><a href="about.php">About</a>
-                                   
-                                </li>
-                               
-                                <li ><a href="services.php">Services</a>
-                                   
-                                </li>
+                                           
+                                        ));   
+                                        ?>
 
-                       
-                                <li><a href="contact.php">Contact</a></li>
-                            </ul>
-                        </div>
                     </nav>
                     <!-- Main Menu End-->
 
 
-                     <?php
-                                        /*wp_nav_menu(array(
-                                            'menu' => 'main menu',
-                                            'items_wrap' => '<ul class="nav-links">%3$s</ul>'
-                                   
-                                           
-                                        ));   */
-                                        ?>
+                  
 
                     <!--Search Box-->
                     <div class="search-box-outer">
@@ -184,7 +177,7 @@
             <div class="auto-container clearfix">
                 <!--Logo-->
                 <div class="logo pull-left">
-                    <a href="index.php" class="img-responsive">
+                    <a href="<?php echo get_site_url(); ?>" class="img-responsive">
                         <h5>Logo here</h5>
                     </a>
                 </div>
@@ -201,22 +194,17 @@
                             </button>
                         </div>
 
-                        <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent1">
-                            <ul class="navigation clearfix">
-                                <li class="current"><a href="index.php">Home</a>
+                     
+                         <?php
+                                        wp_nav_menu(array(
+                                            'menu' => 'main menu',
+                                            'items_wrap' => '<ul class="navigation clearfix">%3$s</ul>',
+                                            'container_class' =>'navbar-collapse collapse clearfix',
+                                            'container_id' =>'navbarSupportedContent1',
                                    
-                                </li>
-                                <li ><a href="about.php">About</a>
-                                   
-                                </li>
-                              
-                                <li><a href="services.php">Services</a>
-                                   
-                                </li>
-                                                     
-                                <li><a href="contact.php">Contact</a></li>
-                            </ul>
-                        </div>
+                                           
+                                        ));   
+                                        ?>
                     </nav><!-- Main Menu End-->
                 </div>
 

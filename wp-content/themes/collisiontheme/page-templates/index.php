@@ -1,5 +1,9 @@
 <?php /* Template Name: Home */ 
 get_header();
+
+
+$page_slug = 'site-general-settings';
+$generalpageid = get_id_by_slug($page_slug);
 ?>
 
  <!--Main Slider-->
@@ -177,124 +181,33 @@ get_header();
     <!-- End Fact counter -->
 
     <!-- Feature Section -->
-    <section class="feature-section" style="background-image:url(images/background/2.jpg);">
+    <section class="feature-section" style="background-image:url(<?php echo get_field('service_section_background_image'); ?>);">
         <div class="auto-container">
             <div class="title-box">
                 <h2>Our Services</h2>
             </div>
 
+            <?php $ourservcies = new WP_Query(array('post_type'=>'our-services','post_status'=>'publish','posts_per_page'=>-1)); ?>
+
             <div class="features-carousel owl-carousel owl-theme">
                 <!-- Feature block -->
-                <div class="feature-block">
-                    <div class="inner-box">
-                        <div class="image-box">
-                            <a href="service-detail.php"><img src="images/resource/feature-1.jpg" alt=""></a>
-                            <span class="price">65<sup>$</sup></span>
-                        </div>
-                        <div class="lower-content">
-                            <h3><a href="service-detail.php">Suspension Repair</a></h3>
-                            <a href="service-detail.php" class="read-more"><i class="fa fa-angle-right"></i> Get A Quote</a>
-                        </div>
-                    </div>
-                </div>
+                <?php while($ourservcies->have_posts()): $ourservcies->the_post(); ?>
 
-                <!-- Feature block -->
                 <div class="feature-block">
                     <div class="inner-box">
                         <div class="image-box">
-                            <a href="service-detail.php"><img src="images/resource/feature-2.jpg" alt=""></a>
-                            <span class="price">45<sup>$</sup></span>
+                            <a href="<?php the_permalink(); ?>"><img src="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt=""></a>
+                            <span class="price"><?php echo get_field('service_price',get_the_ID()); ?><sup>$</sup></span>
                         </div>
                         <div class="lower-content">
-                            <h3><a href="service-detail.php">Engine Overhaul</a></h3>
-                            <a href="service-detail.php" class="read-more"><i class="fa fa-angle-right"></i> Get A Quote</a>
+                            <h3><a href="<?php the_permalink(); ?>"><?php the_permalink(); ?></a></h3>
+                            <a href="<?php the_permalink(); ?>" class="read-more"><i class="fa fa-angle-right"></i> Get A Quote</a>
                         </div>
                     </div>
                 </div>
+            <?php endwhile ;wp_reset_query(); ?>
 
-                <!-- Feature block -->
-                <div class="feature-block">
-                    <div class="inner-box">
-                        <div class="image-box">
-                            <a href="service-detail.php"><img src="images/resource/feature-3.jpg" alt=""></a>
-                            <span class="price">25<sup>$</sup></span>
-                        </div>
-                        <div class="lower-content">
-                            <h3><a href="service-detail.php">Wheel Alignment</a></h3>
-                            <a href="service-detail.php" class="read-more"><i class="fa fa-angle-right"></i> Get A Quote</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Feature block -->
-                <div class="feature-block">
-                    <div class="inner-box">
-                        <div class="image-box">
-                            <a href="service-detail.php"><img src="images/resource/feature-4.jpg" alt=""></a>
-                            <span class="price">85<sup>$</sup></span>
-                        </div>
-                        <div class="lower-content">
-                            <h3><a href="service-detail.php">Suspension Repair</a></h3>
-                            <a href="service-detail.php" class="read-more"><i class="fa fa-angle-right"></i> Get A Quote</a>
-                        </div>
-                    </div>
-                </div>
-
-                                <!-- Feature block -->
-                <div class="feature-block">
-                    <div class="inner-box">
-                        <div class="image-box">
-                            <a href="service-detail.php"><img src="images/resource/feature-1.jpg" alt=""></a>
-                            <span class="price">65<sup>$</sup></span>
-                        </div>
-                        <div class="lower-content">
-                            <h3><a href="service-detail.php">Suspension Repair</a></h3>
-                            <a href="service-detail.php" class="read-more"><i class="fa fa-angle-right"></i> Get A Quote</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Feature block -->
-                <div class="feature-block">
-                    <div class="inner-box">
-                        <div class="image-box">
-                            <a href="service-detail.html"><img src="images/resource/feature-2.jpg" alt=""></a>
-                            <span class="price">45<sup>$</sup></span>
-                        </div>
-                        <div class="lower-content">
-                            <h3><a href="service-detail.html">Engine Overhaul</a></h3>
-                            <a href="service-detail.html" class="read-more"><i class="fa fa-angle-right"></i> Get A Quote</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Feature block -->
-                <div class="feature-block">
-                    <div class="inner-box">
-                        <div class="image-box">
-                            <a href="service-detail.html"><img src="images/resource/feature-3.jpg" alt=""></a>
-                            <span class="price">25<sup>$</sup></span>
-                        </div>
-                        <div class="lower-content">
-                            <h3><a href="service-detail.html">Wheel Alignment</a></h3>
-                            <a href="service-detail.html" class="read-more"><i class="fa fa-angle-right"></i> Get A Quote</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Feature block -->
-                <div class="feature-block">
-                    <div class="inner-box">
-                        <div class="image-box">
-                            <a href="service-detail.html"><img src="images/resource/feature-4.jpg" alt=""></a>
-                            <span class="price">85<sup>$</sup></span>
-                        </div>
-                        <div class="lower-content">
-                            <h3><a href="service-detail.html">Suspension Repair</a></h3>
-                            <a href="service-detail.html" class="read-more"><i class="fa fa-angle-right"></i> Get A Quote</a>
-                        </div>
-                    </div>
-                </div>
+              
             </div>
         </div>
     </section>
@@ -329,9 +242,9 @@ get_header();
                             <figure class="image"><img src="images/gallery/1.jpg" alt=""></figure>
                             <div class="overlay-box">
                                 <div class="icon-box">
-                                    <a href="project-detail.html" class="link"><span class="icon fa fa-link"></span></a>
+                                    <a href="#" class="link"><span class="icon fa fa-link"></span></a>
                                     <a href="images/gallery/1.jpg" class="link" data-fancybox="gallery" data-caption=""><span class="icon fa fa-expand-arrows-alt"></span></a>
-                                    <h3><a href="appointment.html">Car Repair Service</a></h3>
+                                    <h3><a href="#">Car Repair Service</a></h3>
                                 </div>
                             </div>
                         </div>
@@ -602,6 +515,7 @@ get_header();
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -661,38 +575,8 @@ get_header();
             </div>
 
              <div class="contact-form">
-                <form method="post" action="https://expert-themes.com/html/motor-expert/index.html" id="contact-form">
-                    <div class="row clearfix">
-                        <div class="col-lg-6 col-md-12 col-sm-12 form-group pull-right">
-                            <textarea name="message" placeholder="Message"></textarea>
-                        </div>
-
-                        <div class="col-lg-6 col-md-12 col-sm-12">
-                            <div class="row clearfix">
-                                <div class="col-lg-6 col-md-6 col-sm-12 form-group">
-                                    <input type="text" name="username" placeholder="Name" required="">
-                                </div>
-
-                                <div class="col-lg-6 col-md-6 col-sm-12 form-group">
-                                    <input type="email" name="email" placeholder="Email" required="">
-                                </div>
-
-                                <div class="col-lg-6 col-md-6 col-sm-12 form-group">
-                                    <input type="tel" name="phone" placeholder="Phone No" required="">
-                                </div>
-
-                                <div class="col-lg-6 col-md-6 col-sm-12 form-group">
-                                    <input type="text" name="subject" placeholder="Email" required="">
-                                </div>
-
-                                <div class="col-lg-12 col-md-12 col-sm-12 form-group">
-                                    <button type="submit" name="submit-form">send Massage</button>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </form>
+                 <?php echo do_shortcode('[contact-form-7 id="f50744d" title="Contact page form" html_id="contact-form"]'); ?>
+               
             </div>
 
             <div class="contact-info">
@@ -706,18 +590,18 @@ get_header();
                         <ul>
                             <li>
                                 <span class="icon flaticon-placeholder"></span>
-                                <p><strong>Address:</strong><br>13005 Greenville Avenue California.</p>
+                                <p><strong>Address:</strong><br><?php echo get_field('address',$generalpageid); ?></p>
                             </li>
 
                             <li>
                                 <span class="icon flaticon-phone"></span>
-                                <p><strong>Phone:</strong>+1 800125 6524</p>
-                                <p><span>Email:</span><a href="#">mail@autowork.com</a></p>
+                                <p><strong>Phone:</strong><?php echo get_field('phone',$generalpageid); ?></p>
+                                <p><span>Email:</span><a href="#"><?php echo get_field('email',$generalpageid); ?></a></p>
                             </li>
 
                             <li>
                                 <span class="icon flaticon-stopwatch"></span>
-                                <p><strong>Workshop Timeing :</strong><br>  10:00am to 6:00pm  Sunday Closed</p>
+                                <p><strong>Workshop Timeing :</strong><br>  <?php echo get_field('workshop_timings',$generalpageid); ?></p>
                             </li>
                         </ul>
                     </div>
@@ -732,7 +616,7 @@ get_header();
         <!--Map Outer-->
         <div class="map-outer">
             <!--Map Canvas-->
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25216.765666144616!2d144.9456413371385!3d-37.8112271492458!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642b8c21cb29b%3A0x1c045678462e3510!2sMelbourne%20VIC%203000%2C%20Australia!5e0!3m2!1sen!2s!4v1598513355690!5m2!1sen!2s" height="400" style="border:0;"></iframe>
+            <iframe src="<?php echo get_field('google_map_iframe_link',$generalpageid); ?>" height="400" style="border:0;"></iframe>
         </div>
     </section>
     <!-- End Map Section -->
