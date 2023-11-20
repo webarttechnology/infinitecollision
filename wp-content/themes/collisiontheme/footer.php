@@ -65,7 +65,7 @@ $pageid = get_id_by_slug('site-general-settings');
                             <h2 class="widget-title">Our Services</h2>
                             <div class="widget-content">
                                 <ul class="services-list">
-                                    <?php $ourservices = new WP_Query(array('post_type'=>'our-services','post_status'=>'publish','posts_per_page'=>5)); 
+                                    <?php $ourservices = new WP_Query(array('post_type'=>'ourservice','post_status'=>'publish','posts_per_page'=>5)); 
                                     while($ourservices->have_posts()):$ourservices->the_post();
                                     ?>
                                     <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
