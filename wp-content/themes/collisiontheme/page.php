@@ -10,107 +10,58 @@
  */
 
 get_header();
-
+while(have_posts()):the_post();
 ?>
 
 
-<?php if(get_field('inner_banner')!=''){ ?>
-
-<section class="page-header" style="background-image: <?php get_field('inner_banner'); ?>;">
-<?php }
-else{
-    ?>
-    <section class="page-header" >
-<?php }
-
- while(have_posts()):the_post(); ?>
-
-
-    <div class="container">
-
-        <div class="row justify-content-center">
-
-            <div class="col-md-8">
-
-                <div class="content text-center">
-
-                    <h1 class="mb-3 text-white text-capitalize"><?php the_title(); ?></h1>
-
-                    <ul class="list-inline">
-
-                        <li class="list-inline-item"><a href="<?php bloginfo('url'); ?>"> <i class="fa-solid fa-house"></i> Home</a></li>
-
-                        <li class="list-inline-item">/</li>
-
-                        <li class="list-inline-item"><span class="text-theme"><?php the_title(); ?></span></li>
-
-                    </ul>
-
-                </div>
-
+ <!--Page Title-->
+    <section class="page-title" style="background-image:url(<?php echo get_field('inner_banner'); ?>);">
+        <div class="auto-container">
+            <div class="inner-container clearfix">
+                <h1><?php the_title(); ?></h1>
+                <ul class="bread-crumb clearfix">
+                    <li><a href="<?php echo get_site_url(); ?>">Home</a></li>
+                    <li><?php the_title(); ?></li>
+                </ul>
             </div>
-
         </div>
+    </section>
+    <!--End Page Title-->
 
-    </div>
+    <!-- About Us -->
+    <section class="about-us">
+        <div class="auto-container">
+            <div class="row clearfix">
+                <!-- Content Column -->
+                    <!-- Image Column -->
+                <div class="image-column col-lg-12 col-md-12 col-sm-12">
+                    <?php if( get_the_post_thumbnail_url(get_the_ID()) !='')
+                    { ?>
+                    <div class="image-box">
+                        <img src="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt="">
+                    </div>
+                    <div class="row clearfix">
+                     <?php the_content(); ?>
+                    </div>
+                <?php 
+                    }
+                else{
+                    ?>
+                   
+                    <div class="row clearfix">
+                     <?php the_content(); ?>
+                    </div>
 
-</section>
-
-
-<section class="aboutpagesec py-5">
-
-    <div class="container">
-
-        <div class="row align-items-center">
-         <?php if(get_the_post_thumbnail_url(get_the_ID())!='')
-         { ?>
-
-          <div class="col-md-6">
-
-             <div class="aboutpgimg mb-5">
-
-                <img src="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt="">
-
-             </div>
-
-          </div>
-
-          <div class="col-md-6">
-
-            <div class="aboutpgcnt mb-5">
-
-            <?php the_content(); ?>
-
-          </div>
-
-          </div>
-       <?php } 
-       else{
-         ?>
-          <div class="col-md-12">
-
-            <div class="aboutpgcnt mb-5">
-
-            <?php the_content(); ?>
-
-          </div>
-
-          </div>
-
-      <?php  }
+              <?php   }
 
 
+                 ?>
+                </div>
+            </div>
+        </div>
+    </section>
 
-       ?>
-
-      </div>
-
-  </div>
-
-  </section>  
-
-
-  <?php endwhile; 
-  
+<?php 
+  endwhile;
 
 get_footer();
