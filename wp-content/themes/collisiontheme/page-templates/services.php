@@ -1,20 +1,32 @@
 <?php /* Template Name: services */ 
 get_header();
+
+$pageid = get_id_by_slug('site-general-settings');
+
+while(have_posts()):the_post();
 ?>
 
 
  <!--Page Title-->
-    <section class="page-title" style="background-image:url(images/background/8.jpg);">
+     <section class="page-title" style="background-image:url(<?php echo get_field('inner_banner'); ?>);">
         <div class="auto-container">
             <div class="inner-container clearfix">
-                <h1>Services</h1>
+                <h1><?php the_title(); ?></h1>
                 <ul class="bread-crumb clearfix">
-                    <li><a href="index.php">Home</a></li>
-                    <li>services</li>
+                    <li><a href="<?php echo get_site_url(); ?>">Home</a></li>
+                    <li><?php the_title(); ?></li>
                 </ul>
             </div>
         </div>
     </section>
+<?php endwhile; wp_reset_query();
+
+
+$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+$allservices = new WP_Query(array('post_type'=>'our-services','post_status'=>'publish','posts_per_page'=>2,'paged'=>$paged));
+
+
+ ?>
     <!--End Page Title-->
 
     <!-- Services Section -->
@@ -22,149 +34,34 @@ get_header();
         <div class="auto-container">
             <div class="row clearfix">
                 <!-- Service Block -->
+                <?php while($allservices->have_posts()):$allservices->the_post(); ?>
                 <div class="service-block col-lg-4 col-md-6 col-sm-12">
                     <div class="inner-box">
                         <div class="image-box">
-                            <figure><img src="images/resource/service-1.jpg" alt=""></figure>
-                            <div class="title"><h4>Suspension Repair</h4></div>
+                            <figure><img src="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt=""></figure>
+                            <div class="title"><h4><?php the_title(); ?></h4></div>
                         </div>
                         <div class="caption-box">
                             <div class="title-box">
                                 <span class="icon flaticon-electrical"></span>
-                                <h4><a href="service-detail.php">Suspension Repair</a></h4>
+                                <h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
                             </div>
-                            <p>We should point out that maintaining your vehicle with an occasional visual inspectionfluid level.</p>
-                            <a href="service-detail.php" class="read-more">Read More <i class="fa fa-angle-double-right"></i></a>
+                            <p><?php echo wp_trim_words(get_the_content(),12,'...'); ?></p>
+                            <a href="<?php the_permalink(); ?>" class="read-more">Read More <i class="fa fa-angle-double-right"></i></a>
                         </div>
                     </div>
                 </div>
+            <?php endwhile;wp_reset_query(); ?>
 
-                <!-- Service Block -->
-                <div class="service-block col-lg-4 col-md-6 col-sm-12">
-                    <div class="inner-box">
-                        <div class="image-box">
-                            <figure><img src="images/resource/service-2.jpg" alt=""></figure>
-                            <div class="title"><h4>Engine Overhaul</h4></div>
-                        </div>
-                        <div class="caption-box">
-                            <div class="title-box">
-                                <span class="icon flaticon-pistons"></span>
-                                <h4><a href="service-detail.php">Engine Overhaul</a></h4>
-                            </div>
-                            <p>We should point out that maintaining your vehicle with an occasional visual inspectionfluid level.</p>
-                            <a href="service-detail.php" class="read-more">Read More <i class="fa fa-angle-double-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Service Block -->
-                <div class="service-block col-lg-4 col-md-6 col-sm-12">
-                    <div class="inner-box">
-                        <div class="image-box">
-                            <figure><img src="images/resource/service-3.jpg" alt=""></figure>
-                            <div class="title"><h4>Wheel Alignment</h4></div>
-                        </div>
-                        <div class="caption-box">
-                            <div class="title-box">
-                                <span class="icon flaticon-cogwheel"></span>
-                                <h4><a href="service-detail.php">Wheel Alignment</a></h4>
-                            </div>
-                            <p>We should point out that maintaining your vehicle with an occasional visual inspectionfluid level.</p>
-                            <a href="service-detail.php" class="read-more">Read More <i class="fa fa-angle-double-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                                <!-- Service Block -->
-                <div class="service-block col-lg-4 col-md-6 col-sm-12">
-                    <div class="inner-box">
-                        <div class="image-box">
-                            <figure><img src="images/resource/service-4.jpg" alt=""></figure>
-                            <div class="title"><h4>Suspension Repair</h4></div>
-                        </div>
-                        <div class="caption-box">
-                            <div class="title-box">
-                                <span class="icon flaticon-electrical"></span>
-                                <h4><a href="service-detail.php">Suspension Repair</a></h4>
-                            </div>
-                            <p>We should point out that maintaining your vehicle with an occasional visual inspectionfluid level.</p>
-                            <a href="service-detail.php" class="read-more">Read More <i class="fa fa-angle-double-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Service Block -->
-                <div class="service-block col-lg-4 col-md-6 col-sm-12">
-                    <div class="inner-box">
-                        <div class="image-box">
-                            <figure><img src="images/resource/service-5.jpg" alt=""></figure>
-                            <div class="title"><h4>Engine Overhaul</h4></div>
-                        </div>
-                        <div class="caption-box">
-                            <div class="title-box">
-                                <span class="icon flaticon-pistons"></span>
-                                <h4><a href="service-detail.php">Engine Overhaul</a></h4>
-                            </div>
-                            <p>We should point out that maintaining your vehicle with an occasional visual inspectionfluid level.</p>
-                            <a href="service-detail.php" class="read-more">Read More <i class="fa fa-angle-double-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Service Block -->
-                <div class="service-block col-lg-4 col-md-6 col-sm-12">
-                    <div class="inner-box">
-                        <div class="image-box">
-                            <figure><img src="images/resource/service-6.jpg" alt=""></figure>
-                            <div class="title"><h4>Wheel Alignment</h4></div>
-                        </div>
-                        <div class="caption-box">
-                            <div class="title-box">
-                                <span class="icon flaticon-cogwheel"></span>
-                                <h4><a href="service-detail.php">Wheel Alignment</a></h4>
-                            </div>
-                            <p>We should point out that maintaining your vehicle with an occasional visual inspectionfluid level.</p>
-                            <a href="service-detail.php" class="read-more">Read More <i class="fa fa-angle-double-right"></i></a>
-                        </div>
-                    </div>
-                </div>
+            
             </div>
 
-            <!-- Styled Pagination -->
-            <div class="styled-pagination text-center clearfix">
-                <ul class="clearfix">
-                    <li><a href="#" class="active">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a class="next" href="#"><span class="fa fa-angle-right"></span></a></li>
-                </ul>
-            </div>
+             <?php wp_pagenavi(array('query'=>$allservices)); ?>
+          
         </div>
     </section>
     <!-- End Services Section -->
-
-
-    <!--Clients Section-->
-    <section class="clients-section alternate">
-        <div class="auto-container">
-            <div class="sponsors-outer">
-                <!--Sponsors Carousel-->
-                <ul class="sponsors-carousel owl-carousel owl-theme">
-                    <li class="slide-item"><figure class="image-box"><a href="#"><img src="images/clients/1.png" alt=""></a></figure></li>
-                    <li class="slide-item"><figure class="image-box"><a href="#"><img src="images/clients/2.png" alt=""></a></figure></li>
-                    <li class="slide-item"><figure class="image-box"><a href="#"><img src="images/clients/3.png" alt=""></a></figure></li>
-                    <li class="slide-item"><figure class="image-box"><a href="#"><img src="images/clients/4.png" alt=""></a></figure></li>
-                    <li class="slide-item"><figure class="image-box"><a href="#"><img src="images/clients/5.png" alt=""></a></figure></li>
-                    <li class="slide-item"><figure class="image-box"><a href="#"><img src="images/clients/1.png" alt=""></a></figure></li>
-                    <li class="slide-item"><figure class="image-box"><a href="#"><img src="images/clients/2.png" alt=""></a></figure></li>
-                    <li class="slide-item"><figure class="image-box"><a href="#"><img src="images/clients/3.png" alt=""></a></figure></li>
-                    <li class="slide-item"><figure class="image-box"><a href="#"><img src="images/clients/4.png" alt=""></a></figure></li>
-                    <li class="slide-item"><figure class="image-box"><a href="#"><img src="images/clients/5.png" alt=""></a></figure></li>
-                </ul>
-            </div>
-        </div>
-    </section>
+  
     <!--End Clients Section-->
 
  <?php get_footer(); ?>

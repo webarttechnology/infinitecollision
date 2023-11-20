@@ -40,7 +40,7 @@ $pageid = get_id_by_slug('site-general-settings');
 
  ?>
     <!-- Preloader -->
-    <div class="preloader"></div>
+  <!--  <div class="preloader"></div> -->
 
     <!-- Main Header-->
     <header class="main-header">

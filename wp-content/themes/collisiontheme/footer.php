@@ -142,40 +142,14 @@ $pageid = get_id_by_slug('site-general-settings');
 <!--Scroll to top-->
 <div class="scroll-to-top scroll-to-target" data-target="html"><span class="icon fa fa-angle-double-up"></span></div>
 
-<!-- Color Palate / Color Switcher -->
-<!--<div class="color-palate">
-    <div class="color-trigger d-none">
-        <i class="fa fa-cog"></i>
-    </div>
-    <div class="color-palate-head">
-        <h6>Choose Your Color</h6>
-    </div>
-    <div class="various-color clearfix">
-        <div class="colors-list">
-            <span class="palate default-color active" data-theme-file="<?php echo get_stylesheet_directory_uri(); ?>/css/color-themes/default-theme.css"></span>
-            <span class="palate green-color" data-theme-file="<?php echo get_stylesheet_directory_uri(); ?>/css/color-themes/green-theme.css"></span>
-            <span class="palate yellow-color" data-theme-file="<?php echo get_stylesheet_directory_uri(); ?>/css/color-themes/blue-theme.css"></span>
-            <span class="palate orange-color" data-theme-file="<?php echo get_stylesheet_directory_uri(); ?>/css/color-themes/orange-theme.css"></span>
-            <span class="palate purple-color" data-theme-file="<?php echo get_stylesheet_directory_uri(); ?>/css/color-themes/purple-theme.css"></span>
-            <span class="palate teal-color" data-theme-file="<?php echo get_stylesheet_directory_uri(); ?>/css/color-themes/teal-theme.css"></span>
-            <span class="palate brown-color" data-theme-file="<?php echo get_stylesheet_directory_uri(); ?>/css/color-themes/brown-theme.css"></span>
-            <span class="palate redd-color" data-theme-file="<?php echo get_stylesheet_directory_uri(); ?>/css/color-themes/redd-color.css"></span>
-        </div>
-    </div>
 
-    <ul class="rtl-version option-box"> <li class="rtl">RTL Version</li> <li>LTR Version</li></ul>
 
-    <a href="#" class="purchase-btn">Purchase now $15</a>
-
-    <div class="palate-foo">
-        <span>You will find much more options for colors and styling in admin panel. This color picker is used only for demonstation purposes.</span>
-    </div>
-
-</div> -->
 
 <script src="<?php echo get_stylesheet_directory_uri(); ?>/js/jquery.js"></script>
 <script src="<?php echo get_stylesheet_directory_uri(); ?>/js/popper.min.js"></script>
 <script src="<?php echo get_stylesheet_directory_uri(); ?>/js/bootstrap.min.js"></script>
+<script src="<?php echo get_stylesheet_directory_uri(); ?>/js/lightbox-plus-jquery.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <!--Revolution Slider-->
 <script src="<?php echo get_stylesheet_directory_uri(); ?>/addons/revolution/js/jquery.themepunch.revolution.min.js"></script>
 <script src="<?php echo get_stylesheet_directory_uri(); ?>/addons/revolution/js/jquery.themepunch.tools.min.js"></script>
@@ -202,6 +176,11 @@ $pageid = get_id_by_slug('site-general-settings');
 <script src="<?php echo get_stylesheet_directory_uri(); ?>/js/map-script.js"></script>
 <!--End Google Map APi-->
 <script src="<?php echo get_stylesheet_directory_uri(); ?>/js/color-settings.js"></script>
+
+<script>
+    AOS.init();
+</script>
+
 <?php wp_footer(); ?>
 </body>
 

@@ -469,7 +469,7 @@ function prefix_create_custom_post_type() {
         'publicly_queryable'  => true,  
 
         'capability_type'     => 'post',
-        'rewrite'            => true
+        'rewrite'            => false
 
     );
 
@@ -480,13 +480,209 @@ function prefix_create_custom_post_type() {
 
 add_action('init', 'prefix_create_custom_post_type');
 
-function add_custom_taxonomies() {
+
+
+function prefix_create_testimonials() {
+   
+
+    $labels = array(
+
+        'name'          => 'Testimonials', 
+
+        'singular_name' => 'Testimonial'   
+
+    );
+
+  
+
+    $supports = array(
+
+        'title',        
+
+        'editor',       
+
+        'excerpt',      
+
+        'author',       
+
+        'thumbnail',   
+
+        'comments',    
+
+        'trackbacks',   
+
+        'revisions',   
+
+        'custom-fields' 
+
+    );
+
+
+   
+
+    $args = array(
+
+        'labels'              => $labels,
+
+        'description'         => 'Post type ourtestimonials', 
+
+        'supports'            => $supports,
+
+        'hierarchical'        => false, 
+
+        'public'              => true,  
+
+        'show_ui'             => true,  
+
+        'show_in_menu'        => true,  
+        'show_in_nav_menus'   => true,  
+
+        'show_in_admin_bar'   => true,  
+
+        'menu_position'       => 5,     
+
+        'menu_icon'           => true,  
+
+        'can_export'          => true,  
+
+        'has_archive'         => true,  
+
+        'exclude_from_search' => false, 
+
+        'publicly_queryable'  => true,  
+
+        'capability_type'     => 'post',
+        'rewrite'            => true
+
+    );
+
+
+
+    register_post_type('our-testimonials', $args); 
+}
+
+add_action('init', 'prefix_create_testimonials');
+
+
+
+
+function prefix_create_ourworks() {
+   
+
+    $labels = array(
+
+        'name'          => 'Ourworks', 
+
+        'singular_name' => 'Ourwork'   
+
+    );
+
+  
+
+    $supports = array(
+
+        'title',        
+
+        'editor',       
+
+        'excerpt',      
+
+        'author',       
+
+        'thumbnail',   
+
+        'comments',    
+
+        'trackbacks',   
+
+        'revisions',   
+
+        'custom-fields' 
+
+    );
+
+
+   
+
+    $args = array(
+
+        'labels'              => $labels,
+
+        'description'         => 'Post type ourworks', 
+
+        'supports'            => $supports,
+
+        'hierarchical'        => false, 
+
+        'public'              => true,  
+
+        'show_ui'             => true,  
+
+        'show_in_menu'        => true,  
+        'show_in_nav_menus'   => true,  
+
+        'show_in_admin_bar'   => true,  
+
+        'menu_position'       => 5,     
+
+        'menu_icon'           => true,  
+
+        'can_export'          => true,  
+
+        'has_archive'         => true,  
+
+        'exclude_from_search' => false, 
+
+        'publicly_queryable'  => true,  
+
+        'capability_type'     => 'post',
+        'rewrite'            => true
+
+    );
+
+
+
+    register_post_type('our-works', $args); 
+}
+
+add_action('init', 'prefix_create_ourworks');
+
+
+function add_custom_taxonomies_forwork() {
   // Add new "Locations" taxonomy to Posts
-  register_taxonomy('servicetype', 'our-services', array(
+  register_taxonomy('worktype', 'our-works', array(
     // Hierarchical taxonomy (like categories)
     'hierarchical' => true,
     // This array of options controls the labels displayed in the WordPress Admin UI
     'labels' => array(
+      'name' => _x( 'Worktypes', 'taxonomy general name' ),
+      'singular_name' => _x( 'Worktype', 'taxonomy singular name' ),
+      'search_items' =>  __( 'Search Worktype' ),
+      'all_items' => __( 'All Worktypes' ),
+      'parent_item' => __( 'Parent Worktype' ),
+      'parent_item_colon' => __( 'Parent Worktype:' ),
+      'edit_item' => __( 'Edit Worktype' ),
+      'update_item' => __( 'Update Worktype' ),
+      'add_new_item' => __( 'Add New Worktype' ),
+      'new_item_name' => __( 'New Worktype Name' ),
+      'menu_name' => __( 'Worktypes' ),
+    )
+    // Control the slugs used for this taxonomy
+   /* 'rewrite' => array(
+      'slug' => 'worktypes',
+      'with_front' => false, 
+      'hierarchical' => true 
+    ),*/
+  ));
+}
+add_action( 'init', 'add_custom_taxonomies_forwork', 0 );
+
+function add_custom_taxonomies() {
+  
+  register_taxonomy('servicetype', 'our-services', array(
+   
+    'hierarchical' => true,
+     'labels' => array(
       'name' => _x( 'Service types', 'taxonomy general name' ),
       'singular_name' => _x( 'Service type', 'taxonomy singular name' ),
       'search_items' =>  __( 'Search Locations' ),
@@ -498,32 +694,15 @@ function add_custom_taxonomies() {
       'new_item_name' => __( 'New Service type Name' ),
       'menu_name' => __( 'Service type names' ),
     ),
-    // Control the slugs used for this taxonomy
+  
     'rewrite' => array(
-      'slug' => 'our-services', // This controls the base slug that will display before each term
-      'with_front' => false, // Don't display the category base before "/locations/"
-      'hierarchical' => true // This will allow URL's like "/locations/boston/cambridge/"
+      'slug' => 'our-services', 
+      'with_front' => false, 
+      'hierarchical' => true
     ),
   ));
 }
 add_action( 'init', 'add_custom_taxonomies', 0 );
-
-
-
-/*function slug_provide_walker_instance( $args ) {
-
-    if ( isset( $args['walker'] ) && is_string( $args['walker'] ) && class_exists( $args['walker'] ) ) {
-
-        $args['walker'] = new $args['walker'];
-
-    }
-
-    return $args;
-
-}
-
-add_filter( 'wp_nav_menu_args', 'slug_provide_walker_instance', 1001 );*/
-
 
 
 
@@ -638,51 +817,6 @@ function k99_relative_time() {
 
 
 
-
-/*function custom_remove_slug( $post_link, $post, $leavename ) {
-
-    if ( 'our_services' != $post->post_type || 'publish' != $post->post_status ) {
-        
-        
-           return $post_link;
-           
-           
-        }
-
-    $post_link = str_replace( '/' . $post->post_type . '/', '/', $post_link );
-
-    return $post_link;
-}
-
-add_filter( 'post_type_link', 'custom_remove_slug', 10, 3 );
-
-
-function custom_parse_request( $query ) {
-
-    if ( ! $query->is_main_query() || 2 != count( $query->query ) || ! isset( $query->query['page'] ) ) 
-    {
-        return;
-    }
-
-    if ( ! empty( $query->query['name'] ) ) 
-    {
-        $query->set( 'post_type', array( 'post', 'our_services', 'page' ) );
-    }
-}
-add_action( 'pre_get_posts', 'custom_parse_request' ); 
-
-
-
-if(function_exists('acf_add_options_page') ) {
-    
-    acf_add_options_page(array(
-        'page_title'     => 'Theme General Settings',
-        'menu_title'    => 'Theme Settings',
-        'menu_slug'     => 'theme-general-settings',
-        'capability'    => 'edit_posts',
-        'redirect'        => false
-    ));
-}*/
 
 
 

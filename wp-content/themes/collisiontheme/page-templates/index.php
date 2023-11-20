@@ -115,20 +115,21 @@ $generalpageid = get_id_by_slug($page_slug);
                 <!-- Image Column -->
                 <div class="image-column col-lg-6 col-md-12 col-sm-12">
                     <div class="image-box">
-                        <a href="about.php"><img src="images/resource/about-img.jpg" alt=""></a>
+                        <a href="<?php echo get_site_url(); ?>/about-us"><img src="<?php the_field('about_image'); ?>" alt=""></a>
                     </div>
                     <div class="row clearfix">
-                        <div class="column col-lg-6 col-md-6 col-sm-12">
-                            <h3><a href="about.php">Our Mission</a></h3>
-                            <p>Our most popular service is our Virtual Receptionist. We know that sometimes it’s difficult to get to the phone</p>
-                            <a href="about.php" class="read-more">Read More</a>
-                        </div>
+                <?php         $missionvision = CFS()->get('about_mission_vision_repeat'); 
+                             foreach($missionvision as $eachmissionvission){
 
+                  ?>
                         <div class="column col-lg-6 col-md-6 col-sm-12">
-                            <h3><a href="about.php">Our History</a></h3>
-                            <p>If you are in the middle of something and you don’t want to miss that important call that could be the start of an exciting</p>
-                            <a href="about.php" class="read-more">Read More</a>
+                            <h3><a href="<?php echo $eachmissionvission['heading']; ?>"><?php echo $eachmissionvission['heading']; ?></a></h3>
+                            <p><?php echo $eachmissionvission['statement']; ?></p>
+                            <a href="<?php echo $eachmissionvission['read_more_link']; ?>" class="read-more">Read More</a>
                         </div>
+                    <?php } ?>
+
+                       
                     </div>
                 </div>
             </div>
@@ -137,10 +138,10 @@ $generalpageid = get_id_by_slug($page_slug);
     <!-- End About Us -->
 
     <!-- Fact counter -->
-    <section class="fun-fact-section" style="background-image:url(images/background/1.jpg);">
+  <!--  <section class="fun-fact-section" style="background-image:url(images/background/1.jpg);">
         <div class="auto-container">
             <div class="row clearfix">
-                <!-- Count box -->
+               
                 <div class="count-box col-lg-3 col-md-6 col-sm-12">
                     <div class="inner-box">
                         <div class="icon-box"><span class="flaticon-avatar-1"></span></div>
@@ -149,7 +150,7 @@ $generalpageid = get_id_by_slug($page_slug);
                     </div>
                 </div>
 
-                <!-- Count box -->
+                
                 <div class="count-box col-lg-3 col-md-6 col-sm-12">
                     <div class="inner-box">
                         <div class="icon-box"><span class="flaticon-transport"></span></div>
@@ -158,7 +159,7 @@ $generalpageid = get_id_by_slug($page_slug);
                     </div>
                 </div>
 
-                <!-- Count box -->
+               
                 <div class="count-box col-lg-3 col-md-6 col-sm-12">
                     <div class="inner-box">
                         <div class="icon-box"><span class="flaticon-boy-broad-smile"></span></div>
@@ -167,7 +168,7 @@ $generalpageid = get_id_by_slug($page_slug);
                     </div>
                 </div>
 
-                <!-- Count box -->
+               
                 <div class="count-box col-lg-3 col-md-6 col-sm-12">
                     <div class="inner-box">
                         <div class="icon-box"><span class="flaticon-car-1"></span></div>
@@ -177,7 +178,7 @@ $generalpageid = get_id_by_slug($page_slug);
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- End Fact counter -->
 
     <!-- Feature Section -->
@@ -200,7 +201,7 @@ $generalpageid = get_id_by_slug($page_slug);
                             <span class="price"><?php echo get_field('service_price',get_the_ID()); ?><sup>$</sup></span>
                         </div>
                         <div class="lower-content">
-                            <h3><a href="<?php the_permalink(); ?>"><?php the_permalink(); ?></a></h3>
+                            <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
                             <a href="<?php the_permalink(); ?>" class="read-more"><i class="fa fa-angle-right"></i> Get A Quote</a>
                         </div>
                     </div>
@@ -224,131 +225,103 @@ $generalpageid = get_id_by_slug($page_slug);
              <!--MixitUp Galery-->
             <div class="mixitup-gallery">
                 <!--Filter-->
+                <?php
+                     $taxonomy ='worktype';
+                     $terms = get_terms([
+                    'taxonomy' => $taxonomy,
+                    'hide_empty' => false,
+                    ]);
+
+
+//echo '<pre>'; print_r($terms); echo '</pre>'; die();
+/*
+ Array
+(
+    [0] => WP_Term Object
+        (
+            [term_id] => 7
+            [name] => Air Conditioner
+            [slug] => conditioner
+            [term_group] => 0
+            [term_taxonomy_id] => 7
+            [taxonomy] => worktype
+            [description] => 
+            [parent] => 0
+            [count] => 2
+            [filter] => raw
+        )
+
+*/
+ ?>
                 <div class="filters text-center clearfix">
                     <ul class="filter-tabs filter-btns clearfix">
                         <li class="active filter" data-role="button" data-filter="all">View All</li>
-                        <li class="filter" data-role="button" data-filter=".diagnostics">Diagnostics</li>
-                        <li class="filter" data-role="button" data-filter=".engine">Engine</li>
-                        <li class="filter" data-role="button" data-filter=".repair">Repairs</li>
-                        <li class="filter" data-role="button" data-filter=".wheel">Wheel Service</li>
-                        <li class="filter" data-role="button" data-filter=".conditioner">Air Conditioner</li>
+                        <?php foreach($terms as $eachterm){ ?>
+                        <li class="filter" data-role="button" data-filter=".<?php echo $eachterm->slug;  ?>"><?php echo $eachterm->name;  ?></li>
+                    <?php  } ?>
+                       
                     </ul>
                 </div>
+                  <?php 
+                   $temparr = array();
 
+                  $allworks = new WP_Query(array('post_type'=>'our-works','post_status'=>'publish','posts_per_page'=>-1)); ?>
                 <div class="filter-list row clearfix">
                     <!-- Project item -->
-                    <div class="gallery-item mix all engine wheel conditioner col-lg-4 col-md-6 col-sm-12">
+                    <?php while($allworks->have_posts()): $allworks->the_post(); 
+                        $temparr = array();
+                     $arrayoftemobjs = get_the_terms(get_the_ID(),$taxonomy);
+                     //echo '<pre>'; print_r($arrayoftemobjs); echo '</pre>'; die();
+                     foreach($arrayoftemobjs as $eacharrayoftermobj){
+                        $temparr[]= $eacharrayoftermobj->slug;
+                       }
+                       $tmpstr = implode(' ',$temparr);
+                        ?>
+                    <div class="gallery-item mix all <?php echo $tmpstr;  ?> col-lg-4 col-md-6 col-sm-12">
                         <div class="image-box">
-                            <figure class="image"><img src="images/gallery/1.jpg" alt=""></figure>
+                            <figure class="image"><img src="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt=""></figure>
                             <div class="overlay-box">
                                 <div class="icon-box">
-                                    <a href="#" class="link"><span class="icon fa fa-link"></span></a>
-                                    <a href="images/gallery/1.jpg" class="link" data-fancybox="gallery" data-caption=""><span class="icon fa fa-expand-arrows-alt"></span></a>
-                                    <h3><a href="#">Car Repair Service</a></h3>
+                                  <!--  <a href="#" class="link"><span class="icon fa fa-link"></span></a> -->
+                                    <a href="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" class="link" data-fancybox="gallery" data-caption=""><span class="icon fa fa-expand-arrows-alt"></span></a>
+                                    <h3><a href="#"><?php the_title(); ?></a></h3>
                                 </div>
                             </div>
                         </div>
                     </div>
+                <?php endwhile; wp_reset_query(); ?>
+             
 
-                    <!-- Project item -->
-                    <div class="gallery-item mix all diagnostics repair col-lg-4 col-md-6 col-sm-12">
-                        <div class="image-box">
-                            <figure class="image"><img src="images/gallery/2.jpg" alt=""></figure>
-                            <div class="overlay-box">
-                                <div class="icon-box">
-                                    <a href="project-detail.html" class="link"><span class="icon fa fa-link"></span></a>
-                                    <a href="images/gallery/2.jpg" class="link" data-fancybox="gallery" data-caption=""><span class="icon fa fa-expand-arrows-alt"></span></a>
-                                    <h3><a href="appointment.html">Car Repair Service</a></h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Project item -->
-                    <div class="gallery-item mix all engine repair conditioner col-lg-4 col-md-6 col-sm-12">
-                        <div class="image-box">
-                            <figure class="image"><img src="images/gallery/3.jpg" alt=""></figure>
-                            <div class="overlay-box">
-                                <div class="icon-box">
-                                    <a href="project-detail.html" class="link"><span class="icon fa fa-link"></span></a>
-                                    <a href="images/gallery/3.jpg" class="link" data-fancybox="gallery" data-caption=""><span class="icon fa fa-expand-arrows-alt"></span></a>
-                                    <h3><a href="appointment.html">Car Repair Service</a></h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Project item -->
-                    <div class="gallery-item mix all wheel repair col-lg-4 col-md-6 col-sm-12">
-                        <div class="image-box">
-                            <figure class="image"><img src="images/gallery/4.jpg" alt=""></figure>
-                            <div class="overlay-box">
-                                <div class="icon-box">
-                                    <a href="project-detail.html" class="link"><span class="icon fa fa-link"></span></a>
-                                    <a href="images/gallery/4.jpg" class="link" data-fancybox="gallery" data-caption=""><span class="icon fa fa-expand-arrows-alt"></span></a>
-                                    <h3><a href="appointment.html">Car Repair Service</a></h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Project item -->
-                    <div class="gallery-item mix all diagnostics conditioner engine col-lg-4 col-md-6 col-sm-12">
-                        <div class="image-box">
-                            <figure class="image"><img src="images/gallery/5.jpg" alt=""></figure>
-                            <div class="overlay-box">
-                                <div class="icon-box">
-                                    <a href="project-detail.html" class="link"><span class="icon fa fa-link"></span></a>
-                                    <a href="images/gallery/5.jpg" class="link" data-fancybox="gallery" data-caption=""><span class="icon fa fa-expand-arrows-alt"></span></a>
-                                    <h3><a href="appointment.html">Car Repair Service</a></h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Project item -->
-                    <div class="gallery-item mix all wheel repair col-lg-4 col-md-6 col-sm-12">
-                        <div class="image-box">
-                            <figure class="image"><img src="images/gallery/6.jpg" alt=""></figure>
-                            <div class="overlay-box">
-                                <div class="icon-box">
-                                    <a href="project-detail.html" class="link"><span class="icon fa fa-link"></span></a>
-                                    <a href="images/gallery/6.jpg" class="link" data-fancybox="gallery" data-caption=""><span class="icon fa fa-expand-arrows-alt"></span></a>
-                                    <h3><a href="appointment.html">Car Repair Service</a></h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
-                <div class="btn-box text-center">
+                <!--<div class="btn-box text-center">
                     <a href="#" class="theme-btn btn-style-two">View All</a>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>
     <!-- End Gallery section -->
 
     <!-- Subscribe Section -->
-    <section class="subscribe-section">
+  <!--  <section class="subscribe-section">
         <div class="auto-container">
             <div class="inner-container clearfix">
                 <h3>Check out our repair service for your car and get a free clean</h3>
                 <a href="#" class="call-btn">Order Now</a>
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- End Subscribe Section -->
 
     <!-- News section -->
-    <section class="news-section" style="background-image: url(images/background/pattern.png);">
+  <!--  <section class="news-section" style="background-image: url(images/background/pattern.png);">
         <div class="auto-container">
             <div class="title-box">
                 <h2>Our Latest News</h2>
             </div>
 
-            <!-- News Carousel -->
+            
             <div class="news-carousel owl-carousel owl-theme">
-                <!-- News Block -->
+              
                 <div class="news-block">
                     <div class="inner-box clearfix">
                         <div class="image-box">
@@ -370,7 +343,7 @@ $generalpageid = get_id_by_slug($page_slug);
                     </div>
                 </div>
 
-                <!-- News Block -->
+               
                 <div class="news-block">
                     <div class="inner-box clearfix">
                         <div class="image-box">
@@ -392,7 +365,7 @@ $generalpageid = get_id_by_slug($page_slug);
                     </div>
                 </div>
 
-                <!-- News Block -->
+                
                 <div class="news-block">
                     <div class="inner-box clearfix">
                         <div class="image-box">
@@ -414,7 +387,7 @@ $generalpageid = get_id_by_slug($page_slug);
                     </div>
                 </div>
 
-                <!-- News Block -->
+               
                 <div class="news-block">
                     <div class="inner-box clearfix">
                         <div class="image-box">
@@ -438,11 +411,11 @@ $generalpageid = get_id_by_slug($page_slug);
 
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- End News section -->
 
     <!-- Tesm Section -->
-    <section class="team-section">
+ <!--   <section class="team-section">
         <div class="auto-container">
             <div class="sec-title text-center">
                 <h2>Expert Workers</h2>
@@ -450,7 +423,7 @@ $generalpageid = get_id_by_slug($page_slug);
             </div>
 
             <div class="row clearfix">
-                <!-- Team Block -->
+               
                 <div class="team-block col-md-4 col-sm-6 col-xs-12">
                     <div class="inner-box">
                         <div class="image-box">
@@ -472,7 +445,6 @@ $generalpageid = get_id_by_slug($page_slug);
                     </div>
                 </div>
 
-                <!-- Team Block -->
                 <div class="team-block col-lg-4 col-md-6 col-sm-12">
                     <div class="inner-box">
                         <div class="image-box">
@@ -494,7 +466,7 @@ $generalpageid = get_id_by_slug($page_slug);
                     </div>
                 </div>
 
-                <!-- Team Block -->
+              
                 <div class="team-block col-lg-4 col-md-6 col-sm-12">
                     <div class="inner-box">
                         <div class="image-box">
@@ -518,49 +490,33 @@ $generalpageid = get_id_by_slug($page_slug);
 
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- End Tesm Section -->
 
     <!-- Testimonial Seectin -->
-    <section class="testimonial-section" style="background-image: url(images/background/3.jpg);">
+    <section class="testimonial-section" style="background-image: url(<?php echo get_field('testimonial_section_background'); ?>);">
         <div class="auto-container">
             <div class="sec-title text-center">
                 <h2>What Client Says</h2>
                 <div class="separator"><span class="flaticon-settings-2"></span></div>
             </div>
 
+<?php $ourtestimonials = new WP_Query(array('post_type'=>'our-testimonials','posts_per_page'=>-1,'post_status'=>'publish')); ?>
             <!-- Testimonial Block -->
             <div class="testimonial-carousel owl-carousel owl-theme">
 
-                <div class="testimonial-block even">
-                    <figure class="thumb"><img src="images/resource/thumb-1.jpg" alt=""></figure>
-                    <p>“We know that sometimes it’s difficult to get to the phone if you are in the middle of something and you don’t want to miss.”</p>
-                    <div class="name">DAVID MATIN / <span class="designation">Manager</span></div>
-                    <span class="icon fa fa-quote-left"></span>
-                </div>
-
-                <!-- Testimonial Block -->
-                <div class="testimonial-block even">
-                    <figure class="thumb"><img src="images/resource/thumb-2.jpg" alt=""></figure>
-                    <p>“We know that sometimes it’s difficult to get to the phone if you are in the middle of something and you don’t want to miss.”</p>
-                    <div class="name">DAVID MATIN / <span class="designation">Manager</span></div>
-                    <span class="icon fa fa-quote-left"></span>
-                </div>
+                <?php while($ourtestimonials->have_posts()): $ourtestimonials->the_post(); ?>
 
                 <div class="testimonial-block even">
-                    <figure class="thumb"><img src="images/resource/thumb-1.jpg" alt=""></figure>
-                    <p>“We know that sometimes it’s difficult to get to the phone if you are in the middle of something and you don’t want to miss.”</p>
-                    <div class="name">DAVID MATIN / <span class="designation">Manager</span></div>
+                    <figure class="thumb"><img src="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt=""></figure>
+                 <?php the_content(); ?>
+                    <div class="name"><?php the_title(); ?> / <span class="designation"><?php echo get_field('designation',get_the_ID()); ?></span></div>
                     <span class="icon fa fa-quote-left"></span>
                 </div>
+            <?php endwhile; wp_reset_query(); ?>
 
-                <!-- Testimonial Block -->
-                <div class="testimonial-block even">
-                    <figure class="thumb"><img src="images/resource/thumb-2.jpg" alt=""></figure>
-                    <p>“We know that sometimes it’s difficult to get to the phone if you are in the middle of something and you don’t want to miss.”</p>
-                    <div class="name">DAVID MATIN / <span class="designation">Manager</span></div>
-                    <span class="icon fa fa-quote-left"></span>
-                </div>
+      
+
             </div>
         </div>
     </section>
@@ -582,7 +538,7 @@ $generalpageid = get_id_by_slug($page_slug);
             <div class="contact-info">
                 <div class="row clearfix">
                     <div class="image-column col-lg-8 col-md-12 col-sm-12">
-                        <figure><img src="images/resource/car-image.png" alt=""></figure>
+                        <figure><img src="<?php the_field('contact_section_image'); ?>" alt=""></figure>
                     </div>
 
                     <div class="info-column col-lg-4 col-md-12 col-sm-12">
