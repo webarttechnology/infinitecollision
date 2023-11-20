@@ -399,86 +399,7 @@ add_filter( 'auto_update_theme', '__return_false' );
 
    
 
-function prefix_create_custom_post_type() {
-   
 
-    $labels = array(
-
-        'name'          => 'Services', 
-
-        'singular_name' => 'Service'   
-
-    );
-
-  
-
-    $supports = array(
-
-        'title',        
-
-        'editor',       
-
-        'excerpt',      
-
-        'author',       
-
-        'thumbnail',   
-
-        'comments',    
-
-        'trackbacks',   
-
-        'revisions',   
-
-        'custom-fields' 
-
-    );
-
-
-   
-
-    $args = array(
-
-        'labels'              => $labels,
-
-        'description'         => 'Post type ourservices', 
-
-        'supports'            => $supports,
-
-        'hierarchical'        => false, 
-
-        'public'              => true,  
-
-        'show_ui'             => true,  
-
-        'show_in_menu'        => true,  
-        'show_in_nav_menus'   => true,  
-
-        'show_in_admin_bar'   => true,  
-
-        'menu_position'       => 5,     
-
-        'menu_icon'           => true,  
-
-        'can_export'          => true,  
-
-        'has_archive'         => true,  
-
-        'exclude_from_search' => false, 
-
-        'publicly_queryable'  => true,  
-
-        'capability_type'     => 'post',
-        'rewrite'            => false
-
-    );
-
-
-
-    register_post_type('our-services', $args); 
-}
-
-add_action('init', 'prefix_create_custom_post_type');
 
 
 
@@ -666,43 +587,35 @@ function add_custom_taxonomies_forwork() {
       'add_new_item' => __( 'Add New Worktype' ),
       'new_item_name' => __( 'New Worktype Name' ),
       'menu_name' => __( 'Worktypes' ),
-    )
+    ),
     // Control the slugs used for this taxonomy
-   /* 'rewrite' => array(
-      'slug' => 'worktypes',
-      'with_front' => false, 
-      'hierarchical' => true 
-    ),*/
+    'rewrite' => array(
+      'slug' => 'worktypes', // This controls the base slug that will display before each term
+      'with_front' => false, // Don't display the category base before "/locations/"
+      'hierarchical' => true // This will allow URL's like "/locations/boston/cambridge/"
+    ),
   ));
 }
 add_action( 'init', 'add_custom_taxonomies_forwork', 0 );
 
-function add_custom_taxonomies() {
-  
-  register_taxonomy('servicetype', 'our-services', array(
-   
-    'hierarchical' => true,
-     'labels' => array(
-      'name' => _x( 'Service types', 'taxonomy general name' ),
-      'singular_name' => _x( 'Service type', 'taxonomy singular name' ),
-      'search_items' =>  __( 'Search Locations' ),
-      'all_items' => __( 'All Service types' ),
-      'parent_item_colon' => __( 'Parent Location:' ),
-      'edit_item' => __( 'Edit Service type' ),
-      'update_item' => __( 'Update Service type' ),
-      'add_new_item' => __( 'Add New Service type' ),
-      'new_item_name' => __( 'New Service type Name' ),
-      'menu_name' => __( 'Service type names' ),
-    ),
-  
-    'rewrite' => array(
-      'slug' => 'our-services', 
-      'with_front' => false, 
-      'hierarchical' => true
-    ),
-  ));
+
+
+
+
+/*function slug_provide_walker_instance( $args ) {
+
+    if ( isset( $args['walker'] ) && is_string( $args['walker'] ) && class_exists( $args['walker'] ) ) {
+
+        $args['walker'] = new $args['walker'];
+
+    }
+
+    return $args;
+
 }
-add_action( 'init', 'add_custom_taxonomies', 0 );
+
+add_filter( 'wp_nav_menu_args', 'slug_provide_walker_instance', 1001 );*/
+
 
 
 
@@ -815,7 +728,18 @@ function k99_relative_time() {
 
 
 
-
+function searchfilter($query) {
+    if ($query->is_search && !is_admin() ) {
+        if(isset($_GET['post_type'])) {
+            $type = $_GET['post_type'];
+                if($type == 'ourservice') {
+                    $query->set('post_type',array('ourservice'));
+                }
+        }       
+    }
+return $query;
+}
+add_filter('pre_get_posts','searchfilter');
 
 
 

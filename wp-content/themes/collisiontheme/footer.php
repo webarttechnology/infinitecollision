@@ -1,4 +1,3 @@
-
 <?php
 $pageid = get_id_by_slug('site-general-settings');
  
@@ -7,7 +6,6 @@ $pageid = get_id_by_slug('site-general-settings');
 
   $allclients = CFS()->get( 'clients_repeat',$pageid  ); 
 
-//echo '<pre>'; print_r($allclients); echo '</pre>';
 
   ?>
 
@@ -52,10 +50,10 @@ $pageid = get_id_by_slug('site-general-settings');
                                 <div class="text"><?php echo get_field('footer_below_logo_text',$pageid); ?></div>
                                 <h4>Follow Us:</h4>
                                 <ul class="social-icon">
-                                    <li><a href="<?php echo get_field('facebook',$pageid); ?>"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="<?php echo get_field('twitter',$pageid); ?>"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="<?php echo get_field('pinterest',$pageid); ?>"><i class="fab fa-pinterest"></i></a></li>
-                                    <li><a href="<?php echo get_field('dribble',$pageid); ?>"><i class="fab fa-dribbble"></i></a></li>
+                                    <li><a href="<?php echo get_field('facebook',$pageid); ?>" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="<?php echo get_field('twitter',$pageid); ?>" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="<?php echo get_field('pinterest',$pageid); ?>" target="_blank"><i class="fab fa-pinterest"></i></a></li>
+                                    <li><a href="<?php echo get_field('dribble',$pageid); ?>" target="_blank"><i class="fab fa-dribbble"></i></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -89,7 +87,7 @@ $pageid = get_id_by_slug('site-general-settings');
                                 <div class="outer clearfix">
                                     <?php foreach($allinstaimages as $eachinstagramimage){ ?>
                                     <figure class="image">
-                            <a href="<?php echo get_stylesheet_directory_uri(); ?>/images/resource/feature-1.jpg" class="lightbox-image" title="Image Title Here"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/resource/insta-1.jpg" alt=""></a>
+                            <a href="<?php echo $eachinstagramimage['instapopup']; ?>" class="lightbox-image" title="Image Title Here"><img src="<?php echo $eachinstagramimage['normal_image']; ?>" alt=""></a>
                                     </figure>
                                 <?php } ?>
 
@@ -180,7 +178,6 @@ $pageid = get_id_by_slug('site-general-settings');
 <script>
     AOS.init();
 </script>
-
 <?php wp_footer(); ?>
 </body>
 

@@ -8,58 +8,74 @@
  * @subpackage Twenty_Twenty_One
  * @since Twenty Twenty-One 1.0
  */
-
 get_header();
+$pageid = get_id_by_slug('site-general-settings');
 
-if ( have_posts() ) {
-	?>
-	<header class="page-header alignwide">
-		<h1 class="page-title">
-			<?php
-			printf(
-				/* translators: %s: Search term. */
-				esc_html__( 'Results for "%s"', 'twentytwentyone' ),
-				'<span class="page-description search-term">' . esc_html( get_search_query() ) . '</span>'
-			);
-			?>
-		</h1>
-	</header><!-- .page-header -->
+$s=get_search_query();
 
-	<div class="search-result-count default-max-width">
-		<?php
-		printf(
-			esc_html(
-				/* translators: %d: The number of search results. */
-				_n(
-					'We found %d result for your search.',
-					'We found %d results for your search.',
-					(int) $wp_query->found_posts,
-					'twentytwentyone'
-				)
-			),
-			(int) $wp_query->found_posts
-		);
-		?>
-	</div><!-- .search-result-count -->
-	<?php
-	// Start the Loop.
-	while ( have_posts() ) {
-		the_post();
+$args = array(
+                's' =>$s
+	             
+            );
+    // The Query
+$the_query = new WP_Query( $args );
 
-		/*
-		 * Include the Post-Format-specific template for the content.
-		 * If you want to override this in a child theme, then include a file
-		 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-		 */
-		get_template_part( 'template-parts/content/content-excerpt', get_post_format() );
-	} // End the loop.
+?>
 
-	// Previous/next page navigation.
-	twenty_twenty_one_the_posts_navigation();
+ <!--Page Title-->
+     <section class="page-title" style="background-image:url(<?php //echo get_field('inner_banner'); ?>);">
+        <div class="auto-container">
+            <div class="inner-container clearfix">
+                <h1>Search Result</h1>
+                <ul class="bread-crumb clearfix">
+                    <li><a href="<?php echo get_site_url(); ?>">Home</a></li>
+                    <li>Search result</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!--End Page Title-->
 
-	// If no content, include the "No posts found" template.
-} else {
-	get_template_part( 'template-parts/content/content-none' );
-}
+    <!-- Services Section -->
+    <section class="services-page-section">
+        <div class="auto-container">
+            <div class="row clearfix">
+                <!-- Service Block -->
+                <?php 
+				if($the_query->have_posts()):
+							
+				while($the_query->have_posts()):$the_query->the_post(); ?>
+                <div class="service-block col-lg-4 col-md-6 col-sm-12">
+                    <div class="inner-box">
+                        <div class="image-box">
+                            <figure><img src="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt=""></figure>
+                            <div class="title"><h4><?php the_title(); ?></h4></div>
+                        </div>
+                        <div class="caption-box">
+                            <div class="title-box">
+                                <span class="icon flaticon-electrical"></span>
+                                <h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
+                            </div>
+                            <p><?php echo wp_trim_words(get_the_content(),12,'...'); ?></p>
+                            <a href="<?php the_permalink(); ?>" class="read-more">Read More <i class="fa fa-angle-double-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            <?php endwhile;wp_reset_query(); 
+				else:
+				  echo '<p>Sorry nor services abailable for the specified search</p>';
+				
+				
+				endif; ?>
 
-get_footer();
+            
+            </div>
+      
+        
+        </div>
+    </section>
+    <!-- End Services Section -->
+  
+    <!--End Clients Section-->
+
+ <?php get_footer(); ?>

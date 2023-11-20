@@ -1,4 +1,3 @@
-
     <!DOCTYPE html>
 <html lang="en">
 
@@ -56,10 +55,10 @@ $pageid = get_id_by_slug('site-general-settings');
                     </div>
                     <div class="top-right clearfix">
                         <ul class="social-icon-one clearfix">
-                            <li><a href="<?php echo get_field('facebook',$pageid); ?>"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="<?php echo get_field('twitter',$pageid); ?>"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="<?php echo get_field('pinterest',$pageid); ?>"><i class="fab fa-pinterest"></i></a></li>
-                                    <li><a href="<?php echo get_field('dribble',$pageid); ?>"><i class="fab fa-dribbble"></i></a></li>
+                            <li><a href="<?php echo get_field('facebook',$pageid); ?>" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="<?php echo get_field('twitter',$pageid); ?>" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="<?php echo get_field('pinterest',$pageid); ?>" target="_blank"><i class="fab fa-pinterest"></i></a></li>
+                                    <li><a href="<?php echo get_field('dribble',$pageid); ?>" target="_blank"><i class="fab fa-dribbble"></i></a></li>
                         </ul>
                         <div class="call-btn">
                             <a href="<?php echo get_site_url(); ?>/services">Book Now</a>
@@ -155,13 +154,15 @@ $generalpageid = get_id_by_slug('site-general-settings');
                             <ul class="dropdown-menu pull-right search-panel" aria-labelledby="dropdownMenu3">
                                 <li class="panel-outer">
                                     <div class="form-container">
-                                        <form method="post" action="">
-                                            <div class="form-group">
-                                                <input type="search" name="field-name" value="" placeholder="Search Here" required="">
-                                                <button type="submit" class="search-btn"><span class="fa fa-search"></span></button>
-                                            </div>
-                                        </form>
-                                    </div>
+                                       	<form action="<?php echo home_url(); ?>" id="search-form" method="get">
+    <input type="text" name="s" id="s" value="type your search" onblur="if(this.value=='')this.value='type your search'"
+    onfocus="if(this.value=='type your search')this.value=''" />
+	<input type="hidden" name="post_type" value="ourservice" />										
+    <button type="submit" class="search-btn"><span class="fa fa-search"></span></button>
+</form>
+                           
+										
+									         </div>
                                 </li>
                             </ul>
                         </div>
