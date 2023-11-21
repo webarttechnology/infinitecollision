@@ -205,7 +205,7 @@ $generalpageid = get_id_by_slug($page_slug);
                 <h2>Our Services</h2>
             </div>
 
-            <?php $ourservcies = new WP_Query(array('post_type'=>'our-services','post_status'=>'publish','posts_per_page'=>-1)); ?>
+            <?php $ourservcies = new WP_Query(array('post_type'=>'ourservice','post_status'=>'publish','posts_per_page'=>-1)); ?>
 
             <div class="features-carousel owl-carousel owl-theme">
                 <!-- Feature block -->
