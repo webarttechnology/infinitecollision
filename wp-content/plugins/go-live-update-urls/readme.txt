@@ -2,10 +2,10 @@
 Contributors: Mat Lipe, onpointplugins
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=paypal%40onpointplugins%2ecom&lc=US&item_name=Go%20Live%20Update%20Urls&no_note=0&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHostedGuest
 Tags: domain, url, replace, database, tools, launching, domains, domain changes, url changes
-Requires at least: 5.8.0
+Requires at least: 6.0.0
 Tested up to: 6.4.1
-Requires PHP: 7.0.0
-Stable tag: 6.6.3
+Requires PHP: 7.2.0
+Stable tag: 6.7.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -116,6 +116,12 @@ If you find you are running into issues with custom tables, you may want to chec
 3. Update prevented due to incomplete data entered.
 
 == Changelog ==
+= 6.7.0 =
+* Dropped support for PHP 7.0 in favor of 7.2.
+* Bumped minimum supported WordPress version to 6.0.0.
+* Improved block preview link handling.
+* Required PRO version 6.10.3+.
+
 = 6.6.3 =
 * Updated node version to 18.
 * Improved static analysis tools and scan level.

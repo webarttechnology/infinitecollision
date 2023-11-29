@@ -178,6 +178,45 @@ $pageid = get_id_by_slug('site-general-settings');
 <script>
     AOS.init();
 </script>
+<script>
+    jQuery('document').ready(function(){
+        jQuery("#servid").change( function(){
+            alert('hi')
+
+         var serv = jQuery(this).val(); /* this is number of assistants   */
+            //alert(serv)
+         var formid = jQuery("input[name=_wpcf7]").val();
+                         
+            jQuery.ajax({  
+                 url:"<?php echo get_admin_url(); ?>/admin-ajax.php",  
+                 method:"POST",
+            
+                data : 
+                {
+                action : 'update_price',
+                service : serv,
+                formid : formid
+             
+                },    
+                 success:function(response)
+                 {  
+                    /*jQuery("#assiststatus").html(response);
+                    jQuery('#assiststatus').delay(5000).fadeOut(400);*/
+                    if(response=='success'){
+                      alert('Price updated')
+                  }
+
+                 }  
+            });
+
+        
+        
+      });
+
+    });
+
+
+    </script>
 <?php wp_footer(); ?>
 </body>
 

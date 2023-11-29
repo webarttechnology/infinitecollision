@@ -744,5 +744,70 @@ add_filter('pre_get_posts','searchfilter');
 
 
 
+function update_price() 
+{
+    $postid = $_POST['formid'];
+
+    $service = $_POST['service'];/* this is servicename */
+    if($service=='Engine Diagnostic & Repair')
+    {
+
+        $updatedprice = 100;
+         
+
+     }
+      else if($service=='Maintanence Inspection')
+    {
+
+        $updatedprice = 200;
+         
+
+     }
+        else if($service=='Electrical System Diagnostic')
+    {
+
+        $updatedprice = 300;
+         
+
+     }
+
+     else if($service=='Wheel Allignment & Installation')
+    {
+
+        $updatedprice = 400;
+         
+
+     }
+     else if($service=='Air Conditioner Service & Repair')
+    {
+
+        $updatedprice = 500;
+         
+
+     }
+     else{
+        $updatedprice = 0;
+     }
+     if(update_post_meta($postid,'_cf7pp_price',$updatedprice))
+     {
+        echo 'success';
+     }
+     else
+     {
+        echo 'failed';
+     }
+       
+        wp_die();  
+
+}
+
+add_action( 'wp_ajax_nopriv_update_price', 'update_price' );
+add_action( 'wp_ajax_update_price', 'update_price' );
+
+
+
+
+
+
 
 

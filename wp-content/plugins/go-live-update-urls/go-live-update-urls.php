@@ -5,18 +5,18 @@
  * Description: Updates every URL on your site when going live or changing domains.
  * Author: OnPoint Plugins
  * Author URI: https://onpointplugins.com
- * Version: 6.6.3
+ * Version: 6.7.0
  * Text Domain: go-live-update-urls
  * Domain Path: /languages/
  * Network: false
- * Requires at least: 5.8.0
- * Requires PHP: 7.0.0
+ * Requires at least: 6.0.0
+ * Requires PHP: 7.2.0
  *
  * @package go-live-update-urls
  */
 
-define( 'GO_LIVE_UPDATE_URLS_VERSION', '6.6.3' );
-define( 'GO_LIVE_UPDATE_URLS_REQUIRED_PRO_VERSION', '6.10.0' );
+define( 'GO_LIVE_UPDATE_URLS_VERSION', '6.7.0' );
+define( 'GO_LIVE_UPDATE_URLS_REQUIRED_PRO_VERSION', '6.10.3' );
 define( 'GO_LIVE_UPDATE_URLS_URL', plugin_dir_url( __FILE__ ) );
 
 use Go_Live_Update_Urls\Admin;
