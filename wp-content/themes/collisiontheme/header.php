@@ -75,7 +75,7 @@ $generalpageid = get_id_by_slug('site-general-settings');
         <!--Header-Upper-->
         <div class="header-upper">
             <div class="auto-container">
-                <div class="clearfix">
+                <div class="row clearfix">
                     <div class="pull-left logo-outer">
                   <div class="logo"><h3><a href="<?php echo get_site_url(); ?>"><img src="<?php echo get_field('header_logo',$pageid); ?>"></a></h3></div>
                     </div>
