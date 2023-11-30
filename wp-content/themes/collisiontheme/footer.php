@@ -6,10 +6,7 @@ $pageid = get_id_by_slug('site-general-settings');
 
   $allclients = CFS()->get( 'clients_repeat',$pageid  ); 
 
-
   ?>
-
-
 
  <section class="clients-section">
         <div class="auto-container">
@@ -181,7 +178,7 @@ $pageid = get_id_by_slug('site-general-settings');
 <script>
     jQuery('document').ready(function(){
         jQuery("#servid").change( function(){
-            alert('hi')
+            
 
          var serv = jQuery(this).val(); /* this is number of assistants   */
             //alert(serv)
@@ -203,7 +200,7 @@ $pageid = get_id_by_slug('site-general-settings');
                     /*jQuery("#assiststatus").html(response);
                     jQuery('#assiststatus').delay(5000).fadeOut(400);*/
                     if(response=='success'){
-                      alert('Price updated')
+                      //alert('Price updated')
                   }
 
                  }  

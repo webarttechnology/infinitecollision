@@ -6724,6 +6724,7 @@ button:focus{
 .contact-form .form-group input[type="tel"],
 .contact-form .form-group input[type="url"],
 .contact-form .form-group textarea,
+.contact-form .form-group input[type="number"],
 .contact-form .form-group select{
 	position: relative;
     display: block;
@@ -14473,4 +14474,13 @@ h1{
 
 .sticky-header.animated.slideInDown .main-menu .navbar-collapse .navigation .menu-item:hover a {
 	background-color: #9f1a4dbf !important;
+}
+
+
+.contact-section .payonln .contact-form .form-group .wpcf7-submit {
+    background-color: #9F1A4D !important;
+}
+
+.contact-section .payonln .contact-form .form-group .wpcf7-submit:hover {
+    background-color: #000;
 }

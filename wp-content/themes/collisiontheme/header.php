@@ -61,7 +61,7 @@ $pageid = get_id_by_slug('site-general-settings');
                                     <li><a href="<?php echo get_field('dribble',$pageid); ?>" target="_blank"><i class="fab fa-dribbble"></i></a></li>
                         </ul>
                         <div class="call-btn">
-                            <a href="<?php echo get_site_url(); ?>/services">Book Now</a>
+                            <a href="<?php echo get_site_url(); ?>/pay-online/">Pay Online</a>
                         </div>
                     </div>
                 </div>
@@ -84,6 +84,7 @@ $generalpageid = get_id_by_slug('site-general-settings');
                         <div class="upper-column info-box">
                             <div class="icon-box"><span class="flaticon-home"></span></div>
                             <ul>
+                                <li><strong>Address</strong></li>
                                 <li><?php echo get_field('address',$generalpageid); ?></li>
                                 
                             </ul>
