@@ -40,7 +40,7 @@ $pageid = get_id_by_slug('site-general-settings');
                         <div class="footer-widget about-widget">
                             <div class="footer-logo">
                                 <figure>
-                                    <h3><a href="<?php echo get_site_url(); ?>">Logo here</a></h3>
+                                    <h3><a href="<?php echo get_site_url(); ?>"><img src="<?php echo get_field('footer_logo',$pageid); ?>"></a></h3>
                                 </figure>
                             </div>
                             <div class="widget-content">
