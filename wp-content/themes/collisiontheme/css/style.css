@@ -14477,10 +14477,39 @@ h1{
 }
 
 
-.contact-section .payonln .contact-form .form-group .wpcf7-submit {
-    background-color: #9F1A4D !important;
+
+.contact-form .form-group input[type="submit"]{
+	background-color:#9F1A4D !important;
+	color: #fff !important;
 }
 
-.contact-section .payonln .contact-form .form-group .wpcf7-submit:hover {
-    background-color: #000;
+.contact-form .form-group input[type="submit"]:hover{
+	background-color:#000 !important;
+}
+.contact-form .form-group input,
+.contact-form .form-group textarea {
+	border: 1px solid #000;
+	border-radius: 12px;
+	box-shadow: 1px 1px 10px 2px #0000004f;
+}
+.contact-form .form-group input:focus,
+.contact-form .form-group input:focus-visible {
+	border-color: #0000008c !important;
+}
+
+
+.page-id-241 form .payonln .contact-form .row {
+	justify-content: center;
+}
+.page-id-241 .contact-form .form-group input,
+.page-id-241 .contact-form .form-group textarea {
+	font-size: 18px !important;
+	color: #000 !important;
+}
+.page-id-241 .contact-form .form-group input[type="submit"]{
+	color: #fff !important;
+	background-color: #08454d !important;
+}
+.page-id-241 .contact-form .form-group input[type="submit"]:hover{
+	background-color: #000 !important;
 }
