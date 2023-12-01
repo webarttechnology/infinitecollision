@@ -1,8 +1,11 @@
-<?php /* Template Name: Cancelled */ 
-get_header();
+<?php /* Template Name: Pay online */ 
+global $wp_session;
+$wp_session['orderservice'] = 'yes'; 
 
+get_header();
 while(have_posts()):the_post();
 ?>
+
 
  <!--Page Title-->
     <section class="page-title" style="background-image:url(<?php echo get_field('inner_banner'); ?>);">
@@ -35,11 +38,11 @@ while(have_posts()):the_post();
                     </div>
                 <?php 
                     }
-                else {
+                else{
                     ?>
                    
                     <div class="row clearfix">
-                      <?php the_content(); ?>
+                     <?php the_content(); ?>
                     </div>
 
               <?php   }
