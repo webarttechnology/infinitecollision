@@ -1110,6 +1110,8 @@ width: 985%;
 
 .sticky-header .right-col{
 	float:right;
+	display: flex;
+	justify-content: end;
 }
 
 .fixed-header .sticky-header{
@@ -14512,4 +14514,14 @@ h1{
 }
 .page-id-241 .contact-form .form-group input[type="submit"]:hover{
 	background-color: #000 !important;
+}
+
+
+.slideInDown .img-responsive img {
+    display: inline-block;
+    max-width: 68% !important;
+}
+
+.sticky-header.slideInDown {
+	padding: 20px 0;
 }

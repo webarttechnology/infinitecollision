@@ -127,8 +127,6 @@ $generalpageid = get_id_by_slug('site-general-settings');
                                 <span class="icon-bar"></span>
                             </button>
                         </div>
-
-
                  
                            <?php
                                         wp_nav_menu(array(
@@ -176,16 +174,16 @@ $generalpageid = get_id_by_slug('site-general-settings');
 
         <!--Sticky Header-->
         <div class="sticky-header">
-            <div class="auto-container clearfix">
+            <div class="auto-container row clearfix align-items-center">
                 <!--Logo-->
-                <div class="logo pull-left">
+                <div class="logo pull-left col-md-2">
                     <a href="<?php echo get_site_url(); ?>" class="img-responsive">
-                        <h5>Logo here</h5>
+                        <h5><img src="<?php echo get_field('header_logo',$pageid); ?>"></h5>
                     </a>
                 </div>
 
                 <!--Right Col-->
-                <div class="right-col pull-right">
+                <div class="right-col pull-right col-md-10">
                     <!-- Main Menu -->
                     <nav class="main-menu  navbar-expand-md">
                         <div class="navbar-header">
