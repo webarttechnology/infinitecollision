@@ -25,11 +25,11 @@ while(have_posts()):the_post();
     <!-- Contact Section -->
     <section class="contact-section">
         <div class="auto-container">
+            <h4 class="text-center"><?php the_field('contact_page_heading_text'); ?></h4>
             <div class="sec-title text-center">
                 <h2><?php the_title(); ?></h2>
 
             <?php endwhile; ?>
-
 
                 <div class="separator"><span class="flaticon-settings-2"></span></div>
             </div>

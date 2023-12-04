@@ -58,9 +58,11 @@ $generalpageid = get_id_by_slug($page_slug);
 
                             <div class="two-column">
                                 <div class="row clearfix">
+                                <?php if(get_field('additional_info')!=''){ ?>
                                     <div class="info-column col-lg-5 col-md-12 col-sm-12">
                                       <?php the_field('additional_info'); ?>
                                     </div>
+                                <?php } ?>
 
                                     <div class="video-column col-lg-7 col-md-12 col-sm-12">
                                         <div class="inner-column">

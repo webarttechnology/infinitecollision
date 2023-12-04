@@ -1,7 +1,6 @@
 <?php /* Template Name: thankyou */ 
 get_header();
 global $wpdb;
-global $wp_session;
 
 while(have_posts()):the_post();
 ?>
@@ -19,7 +18,7 @@ while(have_posts()):the_post();
         </div>
     </section>
     <!--End Page Title-->
-<?php  if($wp_session){  ?>
+
     <!-- About Us -->
     <section class="about-us">
         <div class="auto-container">
@@ -37,10 +36,10 @@ while(have_posts()):the_post();
 
                         if($_GET['paymentId'])
                         {
-                             $paymentid = $_GET['paymentId'];
+                            $paymentid = $_GET['paymentId'];
                           
-                             $table_name = 'wp_cf7_vdata';
-                             $results = $wpdb->get_results("SELECT * FROM $table_name ORDER BY ID DESC LIMIT 1");
+                            $table_name = 'wp_cf7_vdata';
+                            $results = $wpdb->get_results("SELECT * FROM $table_name ORDER BY ID DESC LIMIT 1");
                              $lastinsertedid = $results[0]->id;
                              $table_name1 = 'wp_cf7_vdata_entry';
                              $data_update = array('value' => $paymentid );
@@ -50,12 +49,15 @@ while(have_posts()):the_post();
 
                         }
 
+
+
+
+
                       ?>
                     </div>
                 <?php 
                     }
-                else
-                   {
+                else{
                     ?>
                    
                     <div class="row clearfix">
@@ -63,10 +65,10 @@ while(have_posts()):the_post();
 
                         if($_GET['paymentId'])
                         {
-                             $paymentid = $_GET['paymentId'];
+                            $paymentid = $_GET['paymentId'];
                          
-                             $table_name = 'wp_cf7_vdata';
-                             $results = $wpdb->get_results("SELECT * FROM $table_name ORDER BY ID DESC LIMIT 1");
+                            $table_name = 'wp_cf7_vdata';
+                            $results = $wpdb->get_results("SELECT * FROM $table_name ORDER BY ID DESC LIMIT 1");
                              $lastinsertedid = $results[0]->id;
                              $table_name1 = 'wp_cf7_vdata_entry';
                              $data_update = array('value' => $paymentid );
@@ -74,6 +76,7 @@ while(have_posts()):the_post();
                              $wpdb->update($table_name1 , $data_update, $data_where);
 
                         }
+
 
 
                       ?>
@@ -89,14 +92,6 @@ while(have_posts()):the_post();
     </section>
 
 <?php 
-}
-else
-{
-  echo ' <section class="about-us">
-        <div class="auto-container">
-            <div class="row clearfix"><div class="image-column col-lg-12 col-md-12 col-sm-12"><h3>You can only access this page if and when you are making a successful payment.</h3></div></div></div></section>';     
-}
   endwhile;
-
 
 get_footer();

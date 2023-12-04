@@ -23,7 +23,7 @@ while(have_posts()):the_post();
 
 
 $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-$allservices = new WP_Query(array('post_type'=>'our-services','post_status'=>'publish','posts_per_page'=>2,'paged'=>$paged));
+$allservices = new WP_Query(array('post_type'=>'ourservice','post_status'=>'publish','posts_per_page'=>2,'paged'=>$paged));
 
 
  ?>

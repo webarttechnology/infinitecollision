@@ -63,20 +63,16 @@ while(have_posts()):the_post();
                 <div class="row clearfix">
                     <div class="content-column pull-right col-lg-7 col-md-12 col-sm-12">
                         <!--Tabs Container-->
-                        active-tab
                         <div class="tabs-content">
                             <!--Tab / Active Tab-->
-<?php 
-$counter = 0;
-
-$whychoose = CFS()->get('why_choose_repeat'); 
-//echo '<pre>'; print_r($whychoose); echo '</pre>'; die();
+                   <?php 
+                    $counter = 0;
+                    $whychoose = CFS()->get('why_choose_repeat'); 
+                   //echo '<pre>'; print_r($whychoose); echo '</pre>'; die();
               foreach($whychoose as $eachreasonset){
                 $counter++;
-                $textforreason =    $eachreasonset['why_choose_us_text']; 
-               
-                    if($counter==1){
-
+                $textforreason =  $eachreasonset['why_choose_us_text']; 
+                         if($counter==1){
 
                          ?>
 

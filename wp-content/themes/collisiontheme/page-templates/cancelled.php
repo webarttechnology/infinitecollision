@@ -35,11 +35,11 @@ while(have_posts()):the_post();
                     </div>
                 <?php 
                     }
-                else {
+                else{
                     ?>
                    
                     <div class="row clearfix">
-                      <?php the_content(); ?>
+                     <?php the_content(); ?>
                     </div>
 
               <?php   }

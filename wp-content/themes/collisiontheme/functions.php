@@ -807,6 +807,18 @@ add_action( 'wp_ajax_update_price', 'update_price' );
 
 
 
+/* initializing session globally       */
+function tatwerat_startSession() {
+    if(!session_id()) {
+        session_start();
+    }
+}
+
+add_action('init', 'tatwerat_startSession', 1);
+
+
+
+
 
 
 

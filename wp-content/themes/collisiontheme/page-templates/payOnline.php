@@ -1,6 +1,6 @@
 <?php /* Template Name: Pay online */ 
-global $wp_session;
-$wp_session['orderservice'] = 'yes'; 
+
+
 
 get_header();
 while(have_posts()):the_post();
