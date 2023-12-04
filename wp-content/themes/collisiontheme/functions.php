@@ -630,8 +630,6 @@ add_filter( 'wp_nav_menu_args', 'slug_provide_walker_instance', 1001 );*/
 
   $text = preg_replace('~[^\pL\d]+~u', $divider, $text);
 
-
-
   // transliterate
 
   $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
@@ -807,14 +805,32 @@ add_action( 'wp_ajax_update_price', 'update_price' );
 
 
 
-/* initializing session globally       */
-function tatwerat_startSession() {
-    if(!session_id()) {
-        session_start();
-    }
-}
 
-add_action('init', 'tatwerat_startSession', 1);
+
+function start_session() {
+if(!session_id()) {
+session_start();
+}
+}
+add_action('init', 'start_session', 1);
+
+
+
+function wpcf7_before_send_mail_function( $contact_form, $abort, $submission ) 
+{
+  
+   // $post_id = $submission->get_meta('container_post_id');
+    $form_id = $contact_form->id();
+    if($form_id==240)
+    {
+         // do something 
+        $_SESSION['payonline'] = 'yes';
+    }
+
+    return $contact_form;
+    
+}
+add_filter( 'wpcf7_before_send_mail', 'wpcf7_before_send_mail_function', 10, 3 );
 
 
 

@@ -32,7 +32,10 @@ while(have_posts()):the_post();
                         <img src="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt="">
                     </div>
                     <div class="row clearfix">
+                        <div class="col-md-12 thankImg">
                      <?php the_content();
+
+                     if($_SESSION['payonline']){
 
                         if($_GET['paymentId'])
                         {
@@ -47,13 +50,13 @@ while(have_posts()):the_post();
                              $wpdb->update($table_name1 , $data_update, $data_where);
                             
 
-                        }
+                         }
 
-
-
+                     }
 
 
                       ?>
+                      </div>
                     </div>
                 <?php 
                     }
@@ -61,25 +64,28 @@ while(have_posts()):the_post();
                     ?>
                    
                     <div class="row clearfix">
-                     <?php the_content();
+                        <div class="col-md-12 thankImg">
+                            <?php the_content();
+                                  if($_SESSION['payonline']){
 
-                        if($_GET['paymentId'])
-                        {
-                            $paymentid = $_GET['paymentId'];
-                         
-                            $table_name = 'wp_cf7_vdata';
-                            $results = $wpdb->get_results("SELECT * FROM $table_name ORDER BY ID DESC LIMIT 1");
-                             $lastinsertedid = $results[0]->id;
-                             $table_name1 = 'wp_cf7_vdata_entry';
-                             $data_update = array('value' => $paymentid );
-                             $data_where = array('name' => 'paymentid', 'data_id' => $lastinsertedid);
-                             $wpdb->update($table_name1 , $data_update, $data_where);
+                                    if($_GET['paymentId'])
+                                    {
+                                        $paymentid = $_GET['paymentId'];
+                                     
+                                        $table_name = 'wp_cf7_vdata';
+                                        $results = $wpdb->get_results("SELECT * FROM $table_name ORDER BY ID DESC LIMIT 1");
+                                         $lastinsertedid = $results[0]->id;
+                                         $table_name1 = 'wp_cf7_vdata_entry';
+                                         $data_update = array('value' => $paymentid );
+                                         $data_where = array('name' => 'paymentid', 'data_id' => $lastinsertedid);
+                                         $wpdb->update($table_name1 , $data_update, $data_where);
 
-                        }
+                                    }
 
+                            }
 
-
-                      ?>
+                                  ?>
+                        </div>
                     </div>
 
               <?php   }
@@ -92,6 +98,9 @@ while(have_posts()):the_post();
     </section>
 
 <?php 
+
   endwhile;
+
+  unset($_SESSION['payonline']);
 
 get_footer();

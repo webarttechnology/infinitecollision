@@ -31,7 +31,9 @@ while(have_posts()):the_post();
                         <img src="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt="">
                     </div>
                     <div class="row clearfix">
+                        <div class="col-md-12 thankImg">
                      <?php the_content(); ?>
+                         </div>
                     </div>
                 <?php 
                     }
@@ -39,7 +41,9 @@ while(have_posts()):the_post();
                     ?>
                    
                     <div class="row clearfix">
+                        <div class="col-md-12 thankImg">
                      <?php the_content(); ?>
+                    </div>
                     </div>
 
               <?php   }
