@@ -62,7 +62,7 @@ $generalpageid = get_id_by_slug($page_slug);
                                     <div class="info-column col-lg-5 col-md-12 col-sm-12">
                                       <?php the_field('additional_info'); ?>
                                     </div>
-                                <?php } ?>
+                                
 
                                     <div class="video-column col-lg-7 col-md-12 col-sm-12">
                                         <div class="inner-column">
@@ -71,6 +71,21 @@ $generalpageid = get_id_by_slug($page_slug);
                                             </figure>
                                         </div>
                                     </div>
+                                    <?php }
+                                    else{
+                                        ?>
+                                         <div class="video-column col-lg-12 col-md-12 col-sm-12">
+                                        <div class="inner-column">
+                                            <figure class="image"><img src="<?php the_field('training_video_image'); ?>" alt="">
+                                                <a href="<?php the_field('training_video'); ?>" class="link" data-fancybox="gallery" data-caption=""><span class="icon fab fa-google-play"></span></a>
+                                            </figure>
+                                        </div>
+                                    </div>
+
+                                  <?php   }
+
+
+                                     ?>
                                 </div>
                             </div>
                         </div>
@@ -123,7 +138,7 @@ $generalpageid = get_id_by_slug($page_slug);
                         <div class="sidebar-widget brochures">
                             <h3>Our Brochures</h3>
                      <?php      $allbrochures = CFS()->get('brochurerepeat');
-                     $brochureimg = CFS()->get('brochure_section_image'); 
+                                $brochureimg = CFS()->get('brochure_section_image'); 
 
                       ?>
                             <div class="brochure-box">
