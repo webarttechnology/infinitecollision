@@ -210,6 +210,8 @@ $pageid = get_id_by_slug('site-general-settings');
         
       });
 
+         jQuery(".digital_signature-pad").attr('width', '600px');
+
     });
 
 
