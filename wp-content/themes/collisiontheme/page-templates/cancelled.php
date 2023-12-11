@@ -5,17 +5,17 @@ while(have_posts()):the_post();
 ?>
 
  <!--Page Title-->
-    <section class="page-title" style="background-image:url(<?php echo get_field('inner_banner'); ?>);">
+    <!--<section class="page-title" style="background-image:url(<?php //echo get_field('inner_banner'); ?>);">
         <div class="auto-container">
             <div class="inner-container clearfix">
-                <h1><?php the_title(); ?></h1>
+                <h1><?php //the_title(); ?></h1>
                 <ul class="bread-crumb clearfix">
-                    <li><a href="<?php echo get_site_url(); ?>">Home</a></li>
-                    <li><?php the_title(); ?></li>
+                    <li><a href="<?php //echo get_site_url(); ?>">Home</a></li>
+                    <li><?php //the_title(); ?></li>
                 </ul>
             </div>
         </div>
-    </section>
+    </section> -->
     <!--End Page Title-->
 
     <!-- About Us -->
@@ -46,7 +46,8 @@ while(have_posts()):the_post();
                     </div>
                     </div>
 
-              <?php   }
+              <?php 
+                    }
 
 
                  ?>
@@ -57,5 +58,6 @@ while(have_posts()):the_post();
 
 <?php 
   endwhile;
+  unset($_SESSION['payonline']);
 
 get_footer();
