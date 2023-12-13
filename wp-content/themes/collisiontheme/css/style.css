@@ -672,10 +672,10 @@ img{
 
 /*=== Main Menu ===*/
 
-.main-header .nav-outer{
-	position:relative;
-	margin-left: 330px;
-	padding-left: 40px;
+.main-header .nav-outer {
+    position: relative;
+    /* margin-left: 330px; */
+    /* padding-left: 40px; */
 }
 
 .main-header .nav-outer:before{
@@ -14528,22 +14528,22 @@ h1{
 .thankImg p{
  text-align:center;
 }
-.page-id-286 .image-column {
+
+.page-id-285 .image-column {
     max-width: 800px;
     margin: -160px auto 0;
     width: 100%;
     background: #fff;
     padding: 30px 60px;
 }
-.page-id-286 .image-column .wpcf7-text , .wpcf7-select ,.wpcf7-date{
+.page-id-285 .image-column .wpcf7-text , .wpcf7-select ,.wpcf7-date{
     border: #ddd 1px solid;
     height: 40px;
     padding: 0 15px;
     margin-bottom: 15px;
     width: 100%;
 }
-.page-id-286 .image-column label {width: 100%; float: left;}
-
+.page-id-285 .image-column label {width: 100%; float: left;}
 .logo{
     margin-bottom: 1rem;
 }
