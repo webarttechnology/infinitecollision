@@ -48,9 +48,9 @@ $pageid = get_id_by_slug('site-general-settings');
                                 <h4>Follow Us:</h4>
                                 <ul class="social-icon">
                                     <li><a href="<?php echo get_field('facebook',$pageid); ?>" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="<?php echo get_field('twitter',$pageid); ?>" target="_blank"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="<?php echo get_field('pinterest',$pageid); ?>" target="_blank"><i class="fab fa-pinterest"></i></a></li>
-                                    <li><a href="<?php echo get_field('dribble',$pageid); ?>" target="_blank"><i class="fab fa-dribbble"></i></a></li>
+                               <li><a href="<?php echo get_field('instagram',$pageid); ?>" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+                                                          
+                                    <li><a href="<?php echo get_field('youtube',$pageid); ?>" target="_blank"><i class="fab fa-youtube"></i></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -166,6 +166,7 @@ $pageid = get_id_by_slug('site-general-settings');
 <script src="<?php echo get_stylesheet_directory_uri(); ?>/js/mixitup.js"></script>
 <script src="<?php echo get_stylesheet_directory_uri(); ?>/js/validate.js"></script>
 <script src="<?php echo get_stylesheet_directory_uri(); ?>/js/script.js"></script>
+<script src="https://kit.fontawesome.com/60b352a9e9.js" crossorigin="anonymous"></script>
 <!--Google Map APi Key-->
 <script src="https://maps.google.com/maps/api/js?key=AIzaSyAOvgMzMavm0loFdwqNrzzVh42X_-lDZ3w"></script>
 <script src="<?php echo get_stylesheet_directory_uri(); ?>/js/map-script.js"></script>
@@ -210,7 +211,7 @@ $pageid = get_id_by_slug('site-general-settings');
         
       });
 
-         jQuery(".digital_signature-pad").attr('width', '600px');
+        jQuery(".digital_signature-pad").attr('width', '600px');
 
     });
 

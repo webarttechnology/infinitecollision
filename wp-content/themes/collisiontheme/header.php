@@ -50,15 +50,16 @@ $pageid = get_id_by_slug('site-general-settings');
                 <div class="inner-container clearfix">
                     <div class="top-left">
                         <ul class="clearfix">
-                            <li>Welcome to Our Auto Work Repair Service</li>
+                            <li><?php echo get_field('top_header_welcome_statement',$pageid); ?></li>
                         </ul>
                     </div>
                     <div class="top-right clearfix">
                         <ul class="social-icon-one clearfix">
                             <li><a href="<?php echo get_field('facebook',$pageid); ?>" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="<?php echo get_field('twitter',$pageid); ?>" target="_blank"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="<?php echo get_field('pinterest',$pageid); ?>" target="_blank"><i class="fab fa-pinterest"></i></a></li>
-                                    <li><a href="<?php echo get_field('dribble',$pageid); ?>" target="_blank"><i class="fab fa-dribbble"></i></a></li>
+                               <li><a href="<?php echo get_field('instagram',$pageid); ?>" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+                                                          
+                                    <li><a href="<?php echo get_field('youtube',$pageid); ?>" target="_blank"><i class="fab fa-youtube"></i></a></li>
+                                  
                         </ul>
                         <div class="call-btn">
                             <a href="<?php echo get_site_url(); ?>/pay-online/">Pay Online</a>
