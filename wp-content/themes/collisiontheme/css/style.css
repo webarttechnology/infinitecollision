@@ -14530,7 +14530,15 @@ h1{
  text-align:center;
 }
 
-.page-id-285 .image-column {
+/*The below is for dwstaging hence commented in case of localhost  */
+/*.page-id-285 .image-column {
+    max-width: 800px;
+    margin: -160px auto 0;
+    width: 100%;
+    background: #fff;
+    padding: 30px 60px;
+}*/
+.page-id-286 .image-column {
     max-width: 800px;
     margin: -160px auto 0;
     width: 100%;
