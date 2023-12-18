@@ -14530,15 +14530,7 @@ h1{
  text-align:center;
 }
 
-/*The below is for dwstaging hence commented in case of localhost  */
-/*.page-id-285 .image-column {
-    max-width: 800px;
-    margin: -160px auto 0;
-    width: 100%;
-    background: #fff;
-    padding: 30px 60px;
-}*/
-.page-id-286 .image-column {
+.page-id-285 .image-column {
     max-width: 800px;
     margin: -160px auto 0;
     width: 100%;
@@ -14554,5 +14546,58 @@ h1{
 }
 .page-id-285 .image-column label {width: 100%; float: left;}
 .logo{
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
+}
+
+
+.payonln .contact-form span input {
+	position: relative;
+    display: block;
+    width: 100%;
+    font-size: 14px;
+    line-height: 20px;
+    color: #bbbbbb;
+    font-weight: 400;
+    padding: 19px 20px;
+    border: 1px solid #dddddd;
+    -webkit-transition: all 300ms ease;
+    -ms-transition: all 300ms ease;
+    -o-transition: all 300ms ease;
+    -moz-transition: all 300ms ease;
+    transition: all 300ms ease;
+}
+
+
+
+
+
+
+.fun-fact-section .count-box .inner-box {
+	border: none;
+}
+.fun-fact-section .count-box .inner-box h3 {
+	color: #fff;
+	margin: 0 0 25px 0;
+}
+.fun-fact-section .count-box .inner-box p {
+	display: flex;
+	justify-content: center;
+}
+.fun-fact-section .count-box .inner-box p a {
+	background: #9F1A4D;
+	color: #fff;
+	padding: 15px 30px;
+	font-size: 14px;
+	line-height: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+	transition: all 0.3s ease;
+}
+.fun-fact-section .count-box .inner-box p a:hover {
+	color: #1c63b8;
+}
+
+
+.main-menu .navigation .payonln {
+	display: none;
 }

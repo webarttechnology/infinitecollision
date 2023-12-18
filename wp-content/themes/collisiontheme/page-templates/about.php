@@ -89,7 +89,7 @@ while(have_posts()):the_post();
                                     <h2><?php echo $eachreasonset['why_choose_us_sub_title']; ?></h2>
                                    <?php echo $textforreason; ?>
                                     
-            <a href="<?php echo $eachreasonset['details_link']; ?>" class="theme-btn btn-style-one"><?php echo $eachreasonset['details_text']; ?></a>
+            <a href="<?php echo $eachreasonset['details_link']; ?>" class="theme-btn btn-style-one" target="_blank"><?php echo $eachreasonset['details_text']; ?></a>
                                 </div>
                             </div>
                         <?php } ?>

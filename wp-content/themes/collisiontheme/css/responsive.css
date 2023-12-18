@@ -775,6 +775,31 @@
 }
 
 @media only screen and (max-width: 767px){
+	.main-menu .navigation .payonln {
+		display: block;
+	}
+	.about-us .image-column form {
+		width: 100%;
+		max-width: 100%;
+	}
+	.about-us .image-column form .row {
+		display: block;
+	}
+	.about-us .image-column {
+		padding: 30px 30px;
+	}
+	.about-us .image-column .wpcf7 {
+		width: 100%;
+		max-width: 100%;
+	}
+	.about-us .image-column form .dscf7_signature_inner {
+		width: 100%;
+		max-width: 100%;
+	}
+	.about-us .image-column form .dscf7_signature_inner canvas {
+		width: 100%;
+		max-width: 100%;
+	}
 	.main-header .sticky-header .main-menu .navigation > li > a{
 		padding: 12px 15px !important;
     	line-height: 22px; 
@@ -949,6 +974,12 @@
 		-o-border-radius:3px;
 		border-radius:3px;
    }
+   .main-header .header-lower {
+	display: none;
+}
+.main-header .main-menu {
+	margin-top: 44px;
+}
    
 	.main-menu .collapse.in,
 	.main-menu .collapsing{
@@ -962,7 +993,7 @@
 		border-radius:3px;	
 	}
 	.fixed-header .sticky-header .main-menu .navbar-header{
-		padding:5px 0px; 
+		padding:0px 0px; 
 	}
 	.main-menu .navbar-header{
 		position:relative;

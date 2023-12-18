@@ -518,23 +518,23 @@ $generalpageid = get_id_by_slug($page_slug);
                 <div class="separator"><span class="flaticon-settings-2"></span></div>
             </div>
 
-<?php $ourtestimonials = new WP_Query(array('post_type'=>'our-testimonials','posts_per_page'=>-1,'post_status'=>'publish')); ?>
+<?php //$ourtestimonials = new WP_Query(array('post_type'=>'our-testimonials','posts_per_page'=>-1,'post_status'=>'publish')); ?>
             <!-- Testimonial Block -->
-            <div class="testimonial-carousel owl-carousel owl-theme">
+         <!--   <div class="testimonial-carousel owl-carousel owl-theme">
 
-                <?php while($ourtestimonials->have_posts()): $ourtestimonials->the_post(); ?>
+                <?php //while($ourtestimonials->have_posts()): $ourtestimonials->the_post(); ?>
 
                 <div class="testimonial-block even">
-                    <figure class="thumb"><img src="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt=""></figure>
-                 <?php the_content(); ?>
-                    <div class="name"><?php the_title(); ?> / <span class="designation"><?php echo get_field('designation',get_the_ID()); ?></span></div>
+                    <figure class="thumb"><img src="<?php //echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt=""></figure>
+                 <?php //the_content(); ?>
+                    <div class="name"><?php //the_title(); ?> / <span class="designation"><?php //echo get_field('designation',get_the_ID()); ?></span></div>
                     <span class="icon fa fa-quote-left"></span>
                 </div>
-            <?php endwhile; wp_reset_query(); ?>
+            <?php //endwhile; wp_reset_query(); ?>
 
       
 
-            </div>
+            </div> -->
         </div>
     </section>
     <!--End Testimonial Seectin -->
