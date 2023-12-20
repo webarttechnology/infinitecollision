@@ -21,7 +21,7 @@ while(have_posts()):the_post();
 
         <div class="row">
             <?php foreach($allgalimg as $eachgalimg){ ?>
-            <div class="col-md-4 mb-4" data-aos="fade-up"
+            <div class="col-md-4 col-sm-6 mb-4" data-aos="fade-up"
      data-aos-duration="3000">
                 <div class="image-box ">
                 <a class="example-image-link" href="<?php echo $eachgalimg['gallery_image'] ?>" data-lightbox="example-set" data-title="Click the right half of the image to move forward."><img class="example-image" src="<?php echo $eachgalimg['gallery_image'] ?>" alt=""/></a>

@@ -215,7 +215,7 @@ $generalpageid = get_id_by_slug($page_slug);
                     <div class="inner-box">
                         <div class="image-box">
                             <a href="<?php the_permalink(); ?>"><img src="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt=""></a>
-                            <span class="price"><?php echo get_field('service_price',get_the_ID()); ?><sup>$</sup></span>
+                            <span class="price"><?php echo get_field('price',get_the_ID()); ?><sup>$</sup></span>
                         </div>
                         <div class="lower-content">
                             <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
@@ -294,7 +294,7 @@ $generalpageid = get_id_by_slug($page_slug);
                        }
                        $tmpstr = implode(' ',$temparr);
                         ?>
-                    <div class="gallery-item mix all <?php echo $tmpstr;  ?> col-lg-4 col-md-6 col-sm-12">
+                    <div class="gallery-item mix all <?php echo $tmpstr;  ?> col-lg-4 col-md-6 col-sm-6">
                         <div class="image-box">
                             <figure class="image"><img src="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt=""></figure>
                             <div class="overlay-box">

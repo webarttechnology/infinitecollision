@@ -61,7 +61,7 @@ while(have_posts()):the_post();
             <!-- Features Tab -->
             <div class="feature-tabs tabs-box">
                 <div class="row clearfix">
-                    <div class="content-column pull-right col-lg-7 col-md-12 col-sm-12">
+                    <div class="content-column pull-right col-md-12 col-sm-12">
                         <!--Tabs Container-->
                         <div class="tabs-content">
                             <!--Tab / Active Tab-->
@@ -100,20 +100,23 @@ while(have_posts()):the_post();
                     </div>
 
 
-                    <div class="btn-column col-lg-5 col-md-12 col-sm-12">
+                    <div class="btn-column col-lg-12 col-md-12 col-sm-12">
                         <!--Tab Btns-->
-                        <ul class="tab-btns tab-buttons clearfix">
+                        <ul class="tab-btns tab-buttons clearfix row">
 <?php $whychoose = CFS()->get('why_choose_repeat'); 
               foreach($whychoose as $eachreasonset){
                 $textforreason =    $eachreasonset['why_choose_us_text']; 
                 $nonhtmllreason = strip_tags($textforreason);
-                $finaltrimmedtext = wp_trim_words($nonhtmllreason,11,'...');
+               // $finaltrimmedtext = wp_trim_words($nonhtmllreason,11,'...');
+                $finaltrimmedtext =  $nonhtmllreason;
 ?>
 
-                            <li data-tab="#<?php echo $eachreasonset['tabid']; ?>" class="tab-btn">
-                                <div class="icon-box"><span class="<?php echo $eachreasonset['flaticon']; ?>"></span></div>
+                            <li data-tab="#<?php echo $eachreasonset['tabid']; ?>" class="col-sm-6">
+								<div class="tab-btn mt-3">
+									<div class="icon-box"><span class="<?php echo $eachreasonset['flaticon']; ?>"></span></div>
                                 <h3><?php echo $eachreasonset['why_choose_us_sub_title']; ?></h3>
                                 <p><?php echo $finaltrimmedtext;  ?> </p>
+								</div>
                             </li>
                         <?php } ?>
                             

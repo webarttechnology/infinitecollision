@@ -22,8 +22,8 @@ while(have_posts()):the_post();
 <?php endwhile; wp_reset_query();
 
 
-$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-$allservices = new WP_Query(array('post_type'=>'ourservice','post_status'=>'publish','posts_per_page'=>2,'paged'=>$paged));
+//$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+$allservices = new WP_Query(array('post_type'=>'ourservice','post_status'=>'publish','posts_per_page'=>-1));
 
 
  ?>
@@ -35,7 +35,7 @@ $allservices = new WP_Query(array('post_type'=>'ourservice','post_status'=>'publ
             <div class="row clearfix">
                 <!-- Service Block -->
                 <?php while($allservices->have_posts()):$allservices->the_post(); ?>
-                <div class="service-block col-lg-4 col-md-6 col-sm-12">
+                <div class="service-block col-lg-4 col-md-6 col-sm-6">
                     <div class="inner-box">
                         <div class="image-box">
                             <figure><img src="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt=""></figure>
@@ -56,7 +56,7 @@ $allservices = new WP_Query(array('post_type'=>'ourservice','post_status'=>'publ
             
             </div>
 
-             <?php wp_pagenavi(array('query'=>$allservices)); ?>
+             <?php //wp_pagenavi(array('query'=>$allservices)); ?>
           
         </div>
     </section>

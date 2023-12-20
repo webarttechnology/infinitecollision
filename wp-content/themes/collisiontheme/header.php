@@ -85,7 +85,7 @@ $generalpageid = get_id_by_slug('site-general-settings');
                         <div class="upper-column info-box">
                             <div class="icon-box"><span class="flaticon-home"></span></div>
                             <ul>
-                                <li><strong>Address</strong></li>
+<!--                                 <li><strong>Address</strong></li> -->
                                 <li><?php echo get_field('address',$generalpageid); ?></li>
                                 
                             </ul>
@@ -95,7 +95,7 @@ $generalpageid = get_id_by_slug('site-general-settings');
                         <div class="upper-column info-box">
                             <div class="icon-box"><span class="flaticon-mail-1"></span></div>
                             <ul>
-                                <li><strong>Send your mail at</strong></li>
+<!--                                 <li><strong>Send your mail at</strong></li> -->
                                 <li><a href="mailto:<?php echo get_field('email',$generalpageid); ?>"><?php echo get_field('email',$generalpageid); ?></a></li>
                             </ul>
                         </div>
@@ -104,7 +104,7 @@ $generalpageid = get_id_by_slug('site-general-settings');
                         <div class="upper-column info-box">
                             <div class="icon-box"><span class="flaticon-clock"></span></div>
                             <ul>
-                                <li><strong>Working Hours</strong></li>
+<!--                                 <li><strong>Working Hours</strong></li> -->
                                 <li> <?php echo get_field('workshop_timings',$generalpageid); ?></li>
                             </ul>
                         </div>

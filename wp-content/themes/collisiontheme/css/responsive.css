@@ -16,6 +16,17 @@
 		font-size: 18px;
 		bottom: 20px;
 	}
+	.sticky-header.slideInDown {
+		padding: 0;
+	}
+	.sticky-header .logo {
+		padding: 15px 0;
+		float: left;
+		margin: 0;
+	}
+	.logo {
+		margin: 1rem 0;
+	}
 
 }
 
@@ -59,6 +70,17 @@
 
 	.pricing-feature .table-outer{
 		overflow: auto;
+	}
+	.main-header .info-box {
+		/* min-height: 50px; */
+		padding-left: 46px;
+		margin-left: 30px;
+		margin-bottom: 00px;
+	}
+	.main-header .info-box .icon-box {
+		top: -9px;
+		height: 50px;
+		line-height: 50px;
 	}
 
 }
@@ -135,8 +157,8 @@
 		margin-right: 0;
 	}
 
-	.main-menu .navigation > li > a{
-		padding: 15px 20px
+	.main-menu .navigation > li > a {
+		padding: 10px 20px;
 	}
 
 	.project-detail .price-list li span{
@@ -420,8 +442,19 @@
 		float:none !important;
 	}
 
-	.main-header .info-box{
-		margin-left: 20px;
+	.main-header .info-box .icon-box {
+		top: -9px;
+		height: -15px;
+		line-height: 45px;
+	}
+	.main-header .info-box {
+		margin-left: 15px;
+	}
+	.main-header .info-box {
+		min-height: auto;
+		padding-left: 26px;
+		margin-left: 30px;
+		margin-bottom: 10px;
 	}
 
 	.main-header .header-top .top-left,
@@ -537,6 +570,9 @@
 
 	.coming-soon .copyright p{
 		font-size: 14px;
+	}
+	.main-header .info-box .icon-box span {
+		font-size: 20px;
 	}
 
 	.main-slider .text br{
@@ -771,10 +807,32 @@
 		display:inline-block;
 		transform:rotate(0deg);
 	}
+	.main-header .sticky-header .main-menu .navigation > li > a {
+		padding: 15px 10px !important;
+		line-height: 30px;
+		font-size: 14px;
+	}
 	
 }
-
+@media only screen and (max-width: 991px){
+	.image-box {
+		width: 100%;
+		position: relative;
+	}
+}
 @media only screen and (max-width: 767px){
+	.clients-section .sponsors-outer .image-box {
+		padding: 0;
+	}
+	.services-page-section, .appointment-section .form-column .inenr-column, .why-us-section, .testi-sec-two, .video-and-faqs, .services-section, .feature-section, .testimonial-section {
+	padding: 40px 0;
+}
+	.image-box {
+		width:100%;
+	}
+	.main-footer .footer-logo img {
+	max-width: 130px;
+}
 	.main-menu .navigation .payonln {
 		display: block;
 	}
@@ -905,14 +963,26 @@
 	.main-header .header-upper .upper-column{
 		margin-left:0px;
 		width:100%;	
+		margin-bottom:0;
 	}
 	
 	.main-header .header-upper .upper-column.info-box {
 		display: block;
-		width:100%;
-		text-align:center;
-		padding:10px 0px;
-		max-width:none;
+		width: 33.333%;
+		text-align: center;
+		padding: 10px 0px;
+		max-width: none;
+		float: left;
+	}
+	.main-header .header-upper .upper-right {
+		padding-top: 0;
+		text-align: center;
+	}
+	.main-header .info-box .icon-box {
+		top: -9px;
+		height: -15px;
+		line-height: 46px;
+		height: auto;
 	}
 
 	.main-header .nav-outer:before{
@@ -979,6 +1049,9 @@
 }
 .main-header .main-menu {
 	margin-top: 44px;
+	position: absolute;
+	top: -60px;
+	right: 0;
 }
    
 	.main-menu .collapse.in,
@@ -1194,9 +1267,10 @@
 	.header-style-four.fixed-header .main-menu:before{
 		display: none;
 	}
-	.fixed-header .sticky-header .logo{
+	.fixed-header .sticky-header .logo {
 		position: relative;
 		z-index: 99;
+		width: 150px;
 	}
 	.fixed-header .sticky-header .main-menu .navigation{
 		position: relative;
@@ -1210,31 +1284,17 @@
 		width: 200%;
 		content: "";
 	}	
-
-	.services-page-section,
-	.appointment-section .form-column .inenr-column,
-	.why-us-section,
-	.testi-sec-two,
-	.video-and-faqs,
-	.services-section,		
-	.feature-section,
-	.testimonial-section{
-		padding: 70px 0;
-	}
-
 	
 	.about-us,
 	.pricing-section,
 	.service-detail-section,
 	.testimonial-and-blog,
 	.team-section{
-		padding: 70px 0 30px;
+		padding: 40px 0 30px;
 	}
 
-	.services-section-two,
-	.fun-fact-two,
-	.main-footer .widgets-section{
-		padding: 70px 0 40px;
+	.services-section-two, .fun-fact-two, .main-footer .widgets-section {
+		padding: 40px 0 40px;
 	}
 
 	.cart-section,
@@ -1468,17 +1528,17 @@
 	.fixed-header .sticky-header .right-col.pull-right{
 		float: none;
 	}
-	.fixed-header .sticky-header .right-col .main-menu .navbar-header .navbar-toggler{
+	.fixed-header .sticky-header .right-col .main-menu .navbar-header .navbar-toggler {
 		color: #000000;
-        font-size: 18px;
-        border: 2px solid #000000;
-        border-radius: 0px;
-        opacity: 1;
-        width: 50px;
-        padding: 4px 9px;
-        position: absolute;
-        right: 0px;
-        top: -43px;
+		font-size: 16px;
+		border: 2px solid #000000;
+		border-radius: 0px;
+		opacity: 1;
+		width: 46px;
+		padding: 2px 7px;
+		position: absolute;
+		right: 0px;
+		top: -43px;
 	}
 	.fixed-header .sticky-header .right-col .main-menu .navbar-header .navbar-toggler .icon-bar{
 		width: 28px;
@@ -1559,14 +1619,62 @@
 	.main-content-box .fixed-top-bar.now-fixed{
 		position:fixed !important;
 	}
-	
+	.contact-info .info-column h3 {
+		font-size: 25px;
+		margin-bottom: 20px;
+	}
+	.contact-info ul li .icon {
+		height: 50px;
+		width: 50px;
+		line-height: 50px;
+		font-size: 20px;
+	}
+	.contact-info ul li {
+		margin-bottom: 15px;
+	}
+	.image-box a {
+		display: inline-block;
+		width: 100%;
+		height: 100px;
+	}
+	.gallery-box .image-box a {
+		height: 200px;
+	}
+	.h4, h4 {
+	font-size: 1.2rem;
+}
+	.page-id-285 .image-column {
+		margin: 0 auto 0;
+		padding: 0 60px;
+	}
 }
 
-@media only screen and (max-width: 599px){
-
-	.main-header .info-box .icon-box span{
-		font-size: 42px;
+@media only screen and (max-width:667px){
+	.main-header .info-box li {
+		color: #444444;
+		font-size: 12px;
+		padding: 0 10px;
 	}
+	.main-header .logo-outer .logo img {
+		width: 130px;
+	}
+	.main-header .header-upper .upper-column.info-box {
+		padding: 0 0 10px;
+	}
+	.main-footer .footer-column .widget-title {
+		position: relative;
+		font-size: 18px;
+		margin-bottom: 15px;
+		padding-bottom: 15px;
+	}
+	.main-footer .services-list li {
+		position: relative;
+		margin-bottom: 10px;
+	}
+}
+
+
+@media only screen and (max-width: 599px){
 	
 	.search-popup .search-form fieldset input[type="submit"]{
 		position:relative;
@@ -1604,8 +1712,9 @@
 		margin-bottom: 10px;
 	}
 
-	.main-header .info-box .icon-box{
+	.main-header .info-box .icon-box {
 		margin-bottom: 0;
+		line-height: inherit;
 	}
 
 	.service-block .overlay-box{
@@ -1775,6 +1884,13 @@
 
 	.rtl .updated-renovation-section .upper-section .content-column .inner-column{
 		padding-right:0px;
+	}
+	.main-header .header-upper .upper-column.info-box {
+		width: 100%;
+		padding:5px 0;
+		display: flex;
+		height:auto !important;
+		justify-content: center;
 	}
 	
 }
