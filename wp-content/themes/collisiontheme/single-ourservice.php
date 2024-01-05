@@ -20,7 +20,7 @@ $generalpageid = get_id_by_slug($page_slug);
         <div class="auto-container">
             <div class="inner-container clearfix">
                 <h1>service detail</h1>
-                <ul class="bread-crumb clearfix">
+                <ul class="bread-crumb clearfix d-none">
                     <li><a href="<?php echo get_site_url(); ?>">Home</a></li>
                     <li>Service detail</li>
                 </ul>
@@ -37,7 +37,7 @@ $generalpageid = get_id_by_slug($page_slug);
                 <div class="content-side pull-right col-lg-9 col-md-12 col-sm-12">
                     <div class="service-detail">
                         <?php $bannersliderepeat = CFS()->get('banner_slide_repeat'); ?>
-                        <div class="service-detail-slider owl-carousel owl-theme">
+                        <div class="service-detail-slider owl-carousel owl-theme d-none">
                             <?php foreach($bannersliderepeat as $eachbanner){ ?>
 
                             <div class="slide-item">
@@ -51,12 +51,19 @@ $generalpageid = get_id_by_slug($page_slug);
 
                         <div class="lower-content">
                             <?php while (have_posts()):the_post(); ?>
-                            <h2><?php the_title(); ?></h2>
-                             <?php the_content();
-                                endwhile;
+							<div class="low_cnt">
+								<div class="col-md-6">
+									<h2><?php the_title(); ?></h2>
+                             <?php the_content(); ?>
+								</div>
+								<div class="col-md-6">
+									<img src="<?php echo $eachbanner['each_banner_image']; ?>" alt="">
+								</div>
+							</div>
+                              <?php  endwhile;
                               ?>
 
-                            <div class="two-column">
+                            <div class="two-column d-none">
                                 <div class="row clearfix">
                                 <?php if(get_field('additional_info')!=''){ ?>
                                     <div class="info-column col-lg-5 col-md-12 col-sm-12">
@@ -92,7 +99,7 @@ $generalpageid = get_id_by_slug($page_slug);
                     </div><!-- Service Detail -->
 
                     <!-- Pricing Feature -->
-                    <div class="pricing-feature">
+                    <div class="pricing-feature d-none">
                         <div class="sec-title">
                             <h2><span>Feature</span> Pricing</h2>
                             <div class="separator"><span class="flaticon-settings-2"></span></div>
@@ -108,12 +115,12 @@ $generalpageid = get_id_by_slug($page_slug);
                 </div>
 
                 <!--Sidebar Side-->
-                <div class="sidebar-side col-lg-3 col-md-4 col-sm-12">
+                <div class="sidebar-side col-lg-3 col-md-12 col-sm-12">
                     <aside class="sidebar services-sidebar">
                         <?php $allservices = new WP_Query(array('post_type'=>'ourservice','posts_per_page'=>-1,'post_status'=>'publish')); ?>
 
                         <!-- Services Cat List -->
-                        <div class="sidebar-widget categories">
+                        <div class="sidebar-widget categories content horizontal-images light" id="content-5">
                             <ul class="service-cat-list">
                                 <?php while($allservices->have_posts()): $allservices->the_post();
                                    if(get_the_ID()==$currentserviceID){
@@ -135,7 +142,7 @@ $generalpageid = get_id_by_slug($page_slug);
                         </div>
 
                         <!-- Brochure -->
-                        <div class="sidebar-widget brochures">
+                        <div class="sidebar-widget brochures d-none">
                             <h3>Our Brochures</h3>
                      <?php      $allbrochures = CFS()->get('brochurerepeat');
                                 $brochureimg = CFS()->get('brochure_section_image'); 

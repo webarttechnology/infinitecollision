@@ -25,7 +25,7 @@ while(have_posts()):the_post();
     <!-- Contact Section -->
     <section class="contact-section">
         <div class="auto-container">
-            <h4 class="text-center"><?php the_field('contact_page_heading_text'); ?></h4>
+            <h5 class="text-center my-5"><?php the_field('contact_page_heading_text'); ?></h5>
             <div class="sec-title text-center">
                 <h2><?php the_title(); ?></h2>
 
@@ -61,7 +61,7 @@ while(have_posts()):the_post();
 
                             <li>
                                 <span class="icon flaticon-stopwatch"></span>
-                                <p><strong>Workshop Timeing :</strong><br>  <?php echo get_field('workshop_timings',$generalpageid); ?></p>
+                                <p><strong>Working Hours:</strong><br>  <?php echo get_field('workshop_timings',$generalpageid); ?></p>
                             </li>
                         </ul>
                     </div>

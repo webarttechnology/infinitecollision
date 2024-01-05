@@ -13,7 +13,6 @@ $generalpageid = get_id_by_slug($page_slug);
          <?php       // $homeslides = CFS()->get( 'sliderepeat' ); 
 
          $homeslides = CFS()->get( 'toprevslides'); 
-
               
 
          ?>
@@ -127,13 +126,19 @@ $generalpageid = get_id_by_slug($page_slug);
                 <div class="content-column col-lg-6 col-md-12 col-sm-12">
                   
                     <?php echo CFS()->get( 'about_text' ); ?>
+					
+					<div class="image-box">
+                        <a href="<?php echo get_site_url(); ?>/about-us"><img src="<?php echo get_field('about_image'); ?>" alt=""></a>
+                    </div>
                 </div>
 
                 <!-- Image Column -->
                 <div class="image-column col-lg-6 col-md-12 col-sm-12">
-                    <div class="image-box">
-                        <a href="<?php echo get_site_url(); ?>/about-us"><img src="<?php the_field('about_image'); ?>" alt=""></a>
-                    </div>
+                    
+					<ul class="certificates d-flex mb-4">
+<li><img src="<?php echo get_field('business_logo1'); ?>" alt="" class="img-fluid"/></li><li><img src="<?php echo get_field('business_logo2'); ?>" alt="" class="img-fluid"/></li>
+						<li></li>
+					</ul>
                     <div class="row clearfix">
                 <?php         $missionvision = CFS()->get('about_mission_vision_repeat'); 
                              foreach($missionvision as $eachmissionvission){
@@ -202,7 +207,7 @@ $generalpageid = get_id_by_slug($page_slug);
     <section class="feature-section" style="background-image:url(<?php echo get_field('service_section_background_image'); ?>);">
         <div class="auto-container">
             <div class="title-box">
-                <h2>Our Services</h2>
+                <h2>Services</h2>
             </div>
 
             <?php $ourservcies = new WP_Query(array('post_type'=>'ourservice','post_status'=>'publish','posts_per_page'=>-1)); ?>
@@ -215,11 +220,11 @@ $generalpageid = get_id_by_slug($page_slug);
                     <div class="inner-box">
                         <div class="image-box">
                             <a href="<?php the_permalink(); ?>"><img src="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt=""></a>
-                            <span class="price"><?php echo get_field('price',get_the_ID()); ?><sup>$</sup></span>
+                            <span class="price d-none"><?php echo get_field('price',get_the_ID()); ?><sup>$</sup></span>
                         </div>
                         <div class="lower-content">
                             <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
-                            <a href="<?php the_permalink(); ?>" class="read-more"><i class="fa fa-angle-right"></i> Get A Quote</a>
+<!--                             <a href="<?php //the_permalink(); ?>" class="read-more"><i class="fa fa-angle-right"></i> Get A Quote</a> -->
                         </div>
                     </div>
                 </div>
@@ -232,91 +237,69 @@ $generalpageid = get_id_by_slug($page_slug);
     <!-- End Feature Section -->
 
     <!-- Gallery Section -->
-    <section class="gallery-section">
+<!--     <section class="gallery-section">
         <div class="auto-container">
             <div class="sec-title text-center">
                 <h2>Our Latest Works</h2>
                 <div class="separator"><span class="flaticon-settings-2"></span></div>
             </div>
 
-             <!--MixitUp Galery-->
             <div class="mixitup-gallery">
-                <!--Filter-->
                 <?php
-                     $taxonomy ='worktype';
-                     $terms = get_terms([
-                    'taxonomy' => $taxonomy,
-                    'hide_empty' => false,
-                    ]);
-
-
-//echo '<pre>'; print_r($terms); echo '</pre>'; die();
-/*
- Array
-(
-    [0] => WP_Term Object
-        (
-            [term_id] => 7
-            [name] => Air Conditioner
-            [slug] => conditioner
-            [term_group] => 0
-            [term_taxonomy_id] => 7
-            [taxonomy] => worktype
-            [description] => 
-            [parent] => 0
-            [count] => 2
-            [filter] => raw
-        )
-
-*/
- ?>
-                <div class="filters text-center clearfix">
-                    <ul class="filter-tabs filter-btns clearfix">
-                        <li class="active filter" data-role="button" data-filter="all">View All</li>
-                        <?php foreach($terms as $eachterm){ ?>
-                        <li class="filter" data-role="button" data-filter=".<?php echo $eachterm->slug;  ?>"><?php echo $eachterm->name;  ?></li>
-                    <?php  } ?>
+                     //$taxonomy ='worktype';
+                     //$terms = get_terms([
+                    //'taxonomy' => $taxonomy,
+                    //'hide_empty' => false,
+                  //  ]);
+//                 <div class="filters text-center clearfix">
+//                     <ul class="filter-tabs filter-btns clearfix">
+//                         <li class="active filter" data-role="button" data-filter="all">View All</li>
+//                         <?php foreach($terms as $eachterm){ ?>
+//                         <li class="filter" data-role="button" data-filter=".<?php //echo $eachterm->slug;  ?>"><?php //echo $eachterm->name;  ?></li>
+//                     <?php // } ?>
                        
-                    </ul>
-                </div>
+//                     </ul>
+//                 </div>
                   <?php 
-                   $temparr = array();
+                   //$temparr = array();
 
-                  $allworks = new WP_Query(array('post_type'=>'our-works','post_status'=>'publish','posts_per_page'=>-1)); ?>
+                  //$allworks = new WP_Query(array('post_type'=>'our-works','post_status'=>'publish','posts_per_page'=>-1)); ?>
                 <div class="filter-list row clearfix">
-                    <!-- Project item -->
-                    <?php while($allworks->have_posts()): $allworks->the_post(); 
-                        $temparr = array();
-                     $arrayoftemobjs = get_the_terms(get_the_ID(),$taxonomy);
-                     //echo '<pre>'; print_r($arrayoftemobjs); echo '</pre>'; die();
-                     foreach($arrayoftemobjs as $eacharrayoftermobj){
-                        $temparr[]= $eacharrayoftermobj->slug;
-                       }
-                       $tmpstr = implode(' ',$temparr);
+                    <?php //while($allworks->have_posts()): $allworks->the_post(); 
+                        //$temparr = array();
+                     //$arrayoftemobjs = get_the_terms(get_the_ID(),$taxonomy);
+                     //foreach($arrayoftemobjs as $eacharrayoftermobj){
+                        //$temparr[]= $eacharrayoftermobj->slug;
+                      // }
+                       //$tmpstr = implode(' ',$temparr);
                         ?>
-                    <div class="gallery-item mix all <?php echo $tmpstr;  ?> col-lg-4 col-md-6 col-sm-6">
+                    <div class="gallery-item mix all <?php //echo $tmpstr;  ?> col-lg-4 col-md-6 col-sm-6">
                         <div class="image-box">
-                            <figure class="image"><img src="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt=""></figure>
+                            <figure class="image"><img src="<?php //echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt=""></figure>
                             <div class="overlay-box">
                                 <div class="icon-box">
-                                  <!--  <a href="#" class="link"><span class="icon fa fa-link"></span></a> -->
-                                    <a href="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" class="link" data-fancybox="gallery" data-caption=""><span class="icon fa fa-expand-arrows-alt"></span></a>
-                                    <h3><a href="#"><?php the_title(); ?></a></h3>
+                                    <a href="<?php //echo get_the_post_thumbnail_url(get_the_ID()); ?>" class="link" data-fancybox="gallery" data-caption=""><span class="icon fa fa-expand-arrows-alt"></span></a>
+                                    <h3><a href="#"><?php //the_title(); ?></a></h3>
                                 </div>
                             </div>
                         </div>
                     </div>
-                <?php endwhile; wp_reset_query(); ?>
-             
-
+                <?php //endwhile; wp_reset_query(); ?>
                 </div>
-                <!--<div class="btn-box text-center">
-                    <a href="#" class="theme-btn btn-style-two">View All</a>
-                </div> -->
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- End Gallery section -->
+
+<section class="latest_section">
+	<div class="auto-container">
+		<div class="contents">
+			<p>
+				<?php echo get_field('simplify_the_process_text'); ?>
+			</p>
+		</div>
+	</div>
+</section>
 
     <!-- Subscribe Section -->
   <!--  <section class="subscribe-section">
@@ -511,7 +494,7 @@ $generalpageid = get_id_by_slug($page_slug);
     <!-- End Tesm Section -->
 
     <!-- Testimonial Seectin -->
-    <section class="testimonial-section" style="background-image: url(<?php echo get_field('testimonial_section_background'); ?>);">
+    <section class="testimonial-section" style="background-image: url(<?php echo get_field('testimonial_section_background'); ?>);" id="testimosec">
         <div class="auto-container">
             <div class="sec-title text-center">
                 <h2>What Client Says</h2>
@@ -529,12 +512,17 @@ $generalpageid = get_id_by_slug($page_slug);
                  <?php //the_content(); ?>
                     <div class="name"><?php //the_title(); ?> / <span class="designation"><?php //echo get_field('designation',get_the_ID()); ?></span></div>
                     <span class="icon fa fa-quote-left"></span>
-                </div>
-            <?php //endwhile; wp_reset_query(); ?>
+                </div> -->
+            <?php //endwhile; wp_reset_query(); 
+
+echo do_shortcode('[trustindex no-registration=google]');
+
+
+            ?>
 
       
 
-            </div> -->
+          <!--  </div> -->
         </div>
     </section>
     <!--End Testimonial Seectin -->
@@ -574,7 +562,7 @@ $generalpageid = get_id_by_slug($page_slug);
 
                             <li>
                                 <span class="icon flaticon-stopwatch"></span>
-                                <p><strong>Workshop Timeing :</strong><br>  <?php echo get_field('workshop_timings',$generalpageid); ?></p>
+                                <p><strong>Working Hours:</strong><br>  <?php echo get_field('workshop_timings',$generalpageid); ?></p>
                             </li>
                         </ul>
                     </div>

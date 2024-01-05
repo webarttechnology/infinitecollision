@@ -19,7 +19,7 @@ while(have_posts()):the_post();
         <div class="auto-container">
             <div class="inner-container clearfix">
                 <h1><?php the_title(); ?></h1>
-                <ul class="bread-crumb clearfix">
+                <ul class="bread-crumb clearfix d-none">
                     <li><a href="<?php echo get_site_url(); ?>">Home</a></li>
                     <li><?php the_title(); ?></li>
                 </ul>

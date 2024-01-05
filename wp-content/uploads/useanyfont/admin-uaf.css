@@ -1,0 +1,12 @@
+				@font-face {
+					font-family: 'calibri-regular';
+					src: url('/cms/infinitecollision/wp-content/uploads/useanyfont/699calibri-regular.woff2') format('woff2'),
+						url('/cms/infinitecollision/wp-content/uploads/useanyfont/699calibri-regular.woff') format('woff');
+						font-weight: 400; font-style: normal; font-display: auto;
+				}
+
+				.calibri-regular{font-family: 'calibri-regular' !important;}
+
+				.et_gf_calibri-regular{background:none !important;font-family:calibri-regular;text-indent:0 !important;font-size:25px;}
+
+		

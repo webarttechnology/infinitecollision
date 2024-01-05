@@ -6,11 +6,15 @@ $pageid = get_id_by_slug('site-general-settings');
 
   $allclients = CFS()->get( 'clients_repeat',$pageid  ); 
 
+$page_slug = 'site-general-settings';
+$generalpageid = get_id_by_slug($page_slug);
+
   ?>
 
  <section class="clients-section">
         <div class="auto-container">
             <div class="sponsors-outer">
+                <h3 class="text-center"><?php echo CFS()->get('client_heading',$pageid); ?></h3>
                 <!--Sponsors Carousel-->
                 <ul class="sponsors-carousel owl-carousel owl-theme">
                     <?php foreach($allclients as $eachclient){  ?>
@@ -59,10 +63,10 @@ $pageid = get_id_by_slug('site-general-settings');
                     <!--Footer Column-->
                     <div class="footer-column col-lg-3 col-md-6 col-sm-12">
                         <div class="footer-widget services-widget">
-                            <h2 class="widget-title">Our Services</h2>
+                            <h2 class="widget-title">Services</h2>
                             <div class="widget-content">
                                 <ul class="services-list">
-                                    <?php $ourservices = new WP_Query(array('post_type'=>'ourservice','post_status'=>'publish','posts_per_page'=>5)); 
+                                    <?php $ourservices = new WP_Query(array('post_type'=>'ourservice','post_status'=>'publish','posts_per_page'=>-1)); 
                                     while($ourservices->have_posts()):$ourservices->the_post();
                                     ?>
                                     <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
@@ -73,8 +77,25 @@ $pageid = get_id_by_slug('site-general-settings');
                         </div>
                     </div>
 
+					
+					
+<!--                     <div class="footer-column col-lg-6 col-md-6 col-sm-12">
+                       
+                        <div class="footer-widget gallery-widget">
+                         
+                            <div class="widget-content">
+                                <div class="map-outer">
+            					
+            					<iframe src="<?php //echo get_field('google_map_iframe_link',$generalpageid); ?>" height="400" style="border:0;"></iframe>
+        </div>
+                            </div>
+                        </div>
+                    </div> -->
+					
+					
+					
                     <!--Footer Column-->
-                    <div class="footer-column col-lg-3 col-md-6 col-sm-12">
+                    <div class="footer-column col-lg-3 col-md-6 col-sm-12 d-none">
                         <!--Footer Column-->
                         <div class="footer-widget gallery-widget">
                             <h2 class="widget-title">Instragram</h2>
@@ -96,7 +117,7 @@ $pageid = get_id_by_slug('site-general-settings');
 
 
                     <!--Footer Column-->
-                    <div class="footer-column col-lg-3 col-md-6 col-sm-12">
+                    <div class="footer-column col-lg-3 col-md-6 col-sm-12 d-none">
                         <!--Footer Column-->
                         <div class="footer-widget news-widget">
                             <h2 class="widget-title">Latest News</h2>
@@ -173,6 +194,10 @@ $pageid = get_id_by_slug('site-general-settings');
 <!--End Google Map APi-->
 <script src="<?php echo get_stylesheet_directory_uri(); ?>/js/color-settings.js"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js" integrity="sha512-2hIlk2fL+NNHkULe9gGdma/T5vSYk80U5tvAFSy3dGEl8XD4h2i6frQvHv5B+bm/Itmi8nJ6krAcj5FWFcBGig==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://kit.fontawesome.com/60b352a9e9.js" crossorigin="anonymous"></script>
+
+
 <script>
     AOS.init();
 </script>
@@ -186,7 +211,7 @@ $pageid = get_id_by_slug('site-general-settings');
          var formid = jQuery("input[name=_wpcf7]").val();
                          
             jQuery.ajax({  
-                 url:"<?php echo get_admin_url(); ?>/admin-ajax.php",  
+                 url:"<?php echo get_admin_url(); ?>admin-ajax.php",  
                  method:"POST",
             
                 data : 
@@ -220,6 +245,88 @@ $pageid = get_id_by_slug('site-general-settings');
 
 
     </script>
+
+<!-- <script>
+	(function($){
+			$(window).on("load",function(){
+				$("#content-5").mCustomScrollbar({
+					axis:"x",
+					theme:"dark-thin",
+					autoExpandScrollbar:true,
+					advanced:{autoExpandHorizontalScroll:true}
+				});
+			});
+		})(jQuery);
+</script> -->
+
+<script> 
+  jQuery(document).ready(function($) {
+    var maxInputs = 2;
+    var inputContainer = $("#school-part");
+    var addButton = $("#career-btn");
+
+
+    var inputsCount = 0;
+
+   
+    addButton.click(function() {
+      if (inputsCount < maxInputs) {
+    
+        inputsCount++;
+
+        
+        var inputContainerDiv = $(`<div class="row">
+				<div class="col-md-3">
+					<p>
+<span class="wpcf7-form-control-wrap" data-name="school-name-1-${inputsCount}"><input size="40" class="wpcf7-form-control wpcf7-text form-control" aria-invalid="false" value="" type="text" name="school-name-1-${inputsCount}" /></span>
+					</p>
+				</div>
+				<div class="col-md-3">
+					<p>
+<span class="wpcf7-form-control-wrap" data-name="location-1-${inputsCount}"><input size="40" class="wpcf7-form-control wpcf7-text form-control"  aria-invalid="false" value="" type="text" name="location-1-${inputsCount}" /></span>
+					</p>
+				</div>
+				<div class="col-md-2">
+					<p>
+<span class="wpcf7-form-control-wrap" data-name="years-attended-1-${inputsCount}"><input class="wpcf7-form-control wpcf7-number  wpcf7-validates-as-number form-control" min="1" max="10"  aria-invalid="false" value="" type="number" name="years-attended-1-${inputsCount}" /></span>
+					</p>
+				</div>
+				<div class="col-md-2">
+					<p>
+<span class="wpcf7-form-control-wrap" data-name="degree-received-1-${inputsCount}"><input size="40" class="wpcf7-form-control wpcf7-text form-control" aria-invalid="false" value="" type="text" name="degree-received-1-${inputsCount}" /></span>
+					</p>
+				</div>
+				<div class="col-md-2">
+<div class="btn btn-primary remove-career-btn">
+						<p>Remove
+						</p>
+					</div>
+				</div>
+			</div>`);
+		  
+		   
+        inputContainerDiv.find('.remove-career-btn').click(function() {
+     
+          inputsCount--;
+
+        
+          inputContainerDiv.remove();
+        });
+		  
+		  console.log('this is my div');
+		  
+        inputContainer.append(inputContainerDiv);
+		  
+      } else {
+        alert("You can only add up to " + maxInputs + " input fields.");
+      }
+		
+    });
+	  
+  });
+
+</script> 
+
 
     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">

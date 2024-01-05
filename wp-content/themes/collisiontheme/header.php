@@ -27,6 +27,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
 <!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
+	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.css" integrity="sha512-fxF1t7b0mpb/ytjBeSu/OpgXxCVcX5/O8AJGYvHaWmNfi/lYLtttitFK17K4iKBva4iU9dcZ+BIV7dyD/nDdSw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/fontawesome.min.css" integrity="sha512-d0olNN35C6VLiulAobxYHZiXJmq+vl+BGIgAxQtD5+kqudro/xNMvv2yIHAciGHpExsIbKX3iLg+0B6d0k4+ZA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
      <?php wp_head(); ?>
 </head>
@@ -59,6 +62,7 @@ $pageid = get_id_by_slug('site-general-settings');
                                <li><a href="<?php echo get_field('instagram',$pageid); ?>" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
                                                           
                                     <li><a href="<?php echo get_field('youtube',$pageid); ?>" target="_blank"><i class="fab fa-youtube"></i></a></li>
+
                                   
                         </ul>
                         <div class="call-btn">
@@ -108,6 +112,19 @@ $generalpageid = get_id_by_slug('site-general-settings');
                                 <li> <?php echo get_field('workshop_timings',$generalpageid); ?></li>
                             </ul>
                         </div>
+                               <div class="upper-column info-box showhiderepair">
+                            <div class="icon-box"><span><img src="<?php echo get_site_url(); ?>/wp-content/uploads/2023/12/1086581.png"  /></span></div>
+                            <ul>
+                               <li><a href="<?php echo get_site_url(); ?>/repair-authorization/" >Repair & authorization</a></li>
+                               </ul>
+                            </div>
+						
+						<div class="upper-column info-box showhidepayonl">
+                            <div class="icon-box"><span><img src="<?php echo get_site_url(); ?>/wp-content/uploads/2023/12/1086581.png"  /></span></div>
+                            <ul>
+                               <li><a href="<?php echo get_site_url(); ?>/pay-online/" >Pay Online</a></li>
+                               </ul>
+                            </div>
                     </div>
                 </div>
             </div>

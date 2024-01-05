@@ -327,26 +327,12 @@ function remove_wp_logo( $wp_admin_bar ) {
 
 }
 
-
-
-
-
-
 function wpb_sender_email($original_email_address)
-
 {
-
     return 'info@infinitecollision.com ';
-
 }
 
-
-
-
-
 add_filter('wp_mail_from', 'wpb_sender_email');
-
-
 
 
 function wpb_sender_name( $original_email_from ) {
@@ -355,16 +341,7 @@ function wpb_sender_name( $original_email_from ) {
 
 }
 
-
-
-
-
 add_filter( 'wp_mail_from_name', 'wpb_sender_name' );
-
-
-
-
-
 
 
 /*add_action('after_setup_theme', 'remove_admin_bar');
@@ -598,10 +575,6 @@ function add_custom_taxonomies_forwork() {
 }
 add_action( 'init', 'add_custom_taxonomies_forwork', 0 );
 
-
-
-
-
 /*function slug_provide_walker_instance( $args ) {
 
     if ( isset( $args['walker'] ) && is_string( $args['walker'] ) && class_exists( $args['walker'] ) ) {
@@ -615,12 +588,6 @@ add_action( 'init', 'add_custom_taxonomies_forwork', 0 );
 }
 
 add_filter( 'wp_nav_menu_args', 'slug_provide_walker_instance', 1001 );*/
-
-
-
-
-
-
 
  function slugify($text, string $divider = '-')
 
@@ -651,27 +618,16 @@ add_filter( 'wp_nav_menu_args', 'slug_provide_walker_instance', 1001 );*/
   // remove duplicate divider
 
   $text = preg_replace('~-+~', $divider, $text);
-
-
-
   // lowercase
 
   $text = strtolower($text);
 
-
-
   if (empty($text)) {
-
-    return 'n-a';
-
+   return 'n-a';
   }
-
-
-
   return $text;
 
 }
-
 
 
     /*  add active class in the anchor */
@@ -723,9 +679,6 @@ function k99_relative_time() {
     }
 }
 
-
-
-
 function searchfilter($query) {
     if ($query->is_search && !is_admin() ) {
         if(isset($_GET['post_type'])) {
@@ -738,8 +691,6 @@ function searchfilter($query) {
 return $query;
 }
 add_filter('pre_get_posts','searchfilter');
-
-
 
 
 function update_price() 
@@ -796,15 +747,10 @@ function update_price()
      }
        
         wp_die();  
-
 }
 
 add_action( 'wp_ajax_nopriv_update_price', 'update_price' );
 add_action( 'wp_ajax_update_price', 'update_price' );
-
-
-
-
 
 
 function start_session() {
@@ -833,9 +779,98 @@ function wpcf7_before_send_mail_function( $contact_form, $abort, $submission )
 add_filter( 'wpcf7_before_send_mail', 'wpcf7_before_send_mail_function', 10, 3 );
 
 
+function action_wpcf7_posted_data( $array ) { 
+   
+if ( (array_key_exists('paymentid', $array)) && ($array['amount']!='' ) ) {
+
+     $value = $array['amount'];
+     $percentage = 3.65/100 * $value;
+     $finalvalue = $value + $percentage;
+     $array['amount'] = $finalvalue;
+     //310.95
+
+}
+
+    return $array;
+} 
+add_filter( 'wpcf7_posted_data', 'action_wpcf7_posted_data', 10, 1 );
 
 
+// Deepak's Code
+
+// // Register Custom Post Type
+// function custom_post_type() {
+//     $labels = array(
+//         'name'                  => _x( 'Career Form Submissions', 'Post Type General Name', 'text_domain' ),
+//         'singular_name'         => _x( 'Career Form Submission', 'Post Type Singular Name', 'text_domain' ),
+//         'menu_name'             => __( 'Career Submissions', 'text_domain' ),
+//         'public'                => false,
+//         'exclude_from_search'   => true,
+//         'publicly_queryable'    => false,
+//         'show_ui'               => true,
+//         'show_in_menu'          => true,
+//         'capability_type'       => 'post',
+//         'supports'              => array( 'title', 'editor' ),
+//     );
+//     $args = array(
+//         'labels'                => $labels,
+//         'hierarchical'          => false,
+//         'public'                => false,
+//         'exclude_from_search'   => true,
+//         'publicly_queryable'    => false,
+//         'show_ui'               => true,
+//         'show_in_menu'          => true,
+//         'capability_type'       => 'post',
+//         'supports'              => array( 'title', 'editor' ),
+//     );
+//     register_post_type( 'career_submission', $args );
+// }
+// add_action( 'init', 'custom_post_type', 0 );
 
 
+// // Save Contact Form 7 submissions as custom post type for a specific form ID
+// function save_contact_form_submission( $cf7 ) {
+//     // Check if the form ID is "f50744d"
+//     if ( $cf7->id() == "f50744d" ) {
+//         $submission = WPCF7_Submission::get_instance();
+//         if ( $submission ) {
+//             $posted_data = $submission->get_posted_data();
 
+//             // Create a new post of the custom post type
+//             $post_args = array(
+//                 'post_title'   => 'Career Form Submission',
+//                 'post_content' => '', // Save form data as post content
+//                 'post_type'    => 'career_submission',
+//                 'post_status'  => 'publish',
+//             );
 
+//             $post_id = wp_insert_post( $post_args );
+
+//             // Save the form submission data as post meta
+//             update_post_meta( $post_id, '_form_data', $posted_data );
+
+//              // Log the form data and post ID
+//              error_log('Form Data: ' . print_r($posted_data, true));
+//              error_log('Post ID: ' . $post_id);
+//         }
+//     }
+// }
+// add_action( 'wpcf7_before_save', 'save_contact_form_submission' );
+
+// // Add custom column to admin post list
+// function add_custom_columns_to_admin($columns) {
+//     $columns['form_data'] = 'Form Data';
+//     return $columns;
+// }
+// add_filter('manage_edit-career_submission_columns', 'add_custom_columns_to_admin');
+
+// // Display form data in custom column
+// function display_custom_column_content($column, $post_id) {
+//     if ($column === 'form_data') {
+//         $form_data = unserialize(get_post_meta($post_id, '_form_data', true));
+
+//         // Display or manipulate the form data as needed
+//         echo '<pre>' . print_r($form_data, true) . '</pre>';
+//     }
+// }
+// add_action('manage_career_submission_posts_custom_column', 'display_custom_column_content', 10, 2);

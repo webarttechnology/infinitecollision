@@ -17,6 +17,7 @@ while(have_posts()):the_post();
 
 <section class="gallery-box">
     <div class="container">
+        <h3 class="gallheading"><?php the_field('gallery_page_heading'); ?></h3>
      <?php    $allgalimg = CFS()->get('gallery_images_repeat');   ?>
 
         <div class="row">
@@ -24,7 +25,7 @@ while(have_posts()):the_post();
             <div class="col-md-4 col-sm-6 mb-4" data-aos="fade-up"
      data-aos-duration="3000">
                 <div class="image-box ">
-                <a class="example-image-link" href="<?php echo $eachgalimg['gallery_image'] ?>" data-lightbox="example-set" data-title="Click the right half of the image to move forward."><img class="example-image" src="<?php echo $eachgalimg['gallery_image'] ?>" alt=""/></a>
+                <a class="example-image-link" href="<?php echo $eachgalimg['gallery_image']; ?>" data-lightbox="example-set" data-title="Click the right half of the image to move forward."><img class="example-image" src="<?php echo $eachgalimg['gallery_image']; ?>" alt=""/></a>
                 </div>
 
             </div>

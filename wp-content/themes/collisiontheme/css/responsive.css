@@ -1,5 +1,12 @@
 /* Motor Expert - Auto Repair & Service HTML Template */
 
+
+@media only screen and (max-width: 1920px){
+.showhiderepair {display:none !important}
+	.showhidepayonl {
+    display: none !important;
+}
+}
 @media only screen and (max-width: 1439px){
 	.cs-countdown div{
 		height: 150px;
@@ -1531,7 +1538,7 @@
 	.fixed-header .sticky-header .right-col .main-menu .navbar-header .navbar-toggler {
 		color: #000000;
 		font-size: 16px;
-		border: 2px solid #000000;
+		border: 2px solid #000;
 		border-radius: 0px;
 		opacity: 1;
 		width: 46px;
@@ -1543,7 +1550,7 @@
 	.fixed-header .sticky-header .right-col .main-menu .navbar-header .navbar-toggler .icon-bar{
 		width: 28px;
         height: 2px;
-        background-color: #000000;
+        background-color: #000;
         position: relative;
         display: block;
         padding: 0px;
@@ -1647,9 +1654,19 @@
 		margin: 0 auto 0;
 		padding: 0 60px;
 	}
+	.main-header .header-upper .upper-column.info-box.showhidepayonl {
+		display: flex !important;
+	}
+	.main-header .header-upper .upper-column.info-box.showhidepayonl img {
+		width: 25px;
+	}
+	.main-menu .navbar-collapse ul li.payonln {
+		display: none;
+	}
 }
 
 @media only screen and (max-width:667px){
+.showhiderepair {display: flex !important}
 	.main-header .info-box li {
 		color: #444444;
 		font-size: 12px;
@@ -1675,6 +1692,10 @@
 
 
 @media only screen and (max-width: 599px){
+
+           .repairauth{
+              display:none;
+           }
 	
 	.search-popup .search-form fieldset input[type="submit"]{
 		position:relative;

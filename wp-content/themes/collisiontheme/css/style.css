@@ -83,6 +83,13 @@
 
  ***/
 
+.social-icon-one .fab {
+    font-family: "Font Awesome 6 Brands" !important;
+}
+.social-icon-one .fa-brands {
+    font-family: "Font Awesome 6 Brands" !important;
+}
+
 body {
 	font-size:15px;
 	color:#777777;
@@ -93,7 +100,7 @@ body {
 	background-repeat:no-repeat;
 	background-position:center top;
 	-webkit-font-smoothing: antialiased;
-	font-family: 'Roboto', sans-serif;
+	font-family:  Calibri, sans-serif;
 
 }
 
@@ -608,7 +615,7 @@ img{
 	color:#777777;
 	line-height: 24px;
 	margin-left:30px;
-	margin-bottom: 20px;
+	margin-bottom: 0;
 	display: flex;
 	align-items: center;
 }
@@ -748,17 +755,17 @@ width: 985%;
 	background-color: #08454d;
 }
 
-.main-header .sticky-header .main-menu .navigation > li > a{
-	color:#181818;
-	padding:15px 15px !important;
-	line-height:30px;
-	font-size:16px;
-	font-weight:500;
-	min-height:0px;
-	background:none;
-	border:0px;
-	margin-right:0px;
-	text-transform:capitalize;
+.main-header .sticky-header .main-menu .navigation > li > a {
+    color: #181818;
+    padding: 15px 10px !important;
+    line-height: 14px;
+    font-size: 15px;
+    font-weight: 500;
+    min-height: 0px;
+    background: none;
+    border: 0px;
+    margin-right: 0px;
+    text-transform: capitalize;
 }
 
 .main-menu .navigation > li:hover > a {
@@ -1784,7 +1791,8 @@ button:focus{
 
 .page-title{
 	position:relative;
-	padding:100px 0px;
+/* 	padding:100px 0px; */
+	padding: 40px 0;
 	background-size:cover;
 	background-position:center center;
 	background-repeat:no-repeat;
@@ -1819,6 +1827,7 @@ button:focus{
 	position: relative;
 	float: right;
 	padding: 10px 0;
+	display: none;
 }
 
 .page-title .bread-crumb li{
@@ -2512,12 +2521,13 @@ button:focus{
 	font-size: 14px;
 }
 
-.feature-block .lower-content{
-	position: relative;
-	background-color: #ffffff;
-	text-align: center;
-	padding: 28px 15px;
-	border: 1px dashed #aaaaaa;
+.feature-block .lower-content {
+    position: relative;
+    background-color: #ffffff;
+    text-align: center;
+    padding: 10px 15px;
+    border: 1px dashed #aaaaaa;
+    height: 64px;
 }
 
 .feature-block .lower-content h3{
@@ -2734,9 +2744,10 @@ button:focus{
 
 .service-block .caption-box .title-box{
 	position: relative;
-	margin-bottom: 15px;
-	padding: 17.5px 0;
+	margin-bottom: 0;
+	padding: 14.5px 0;
 	padding-left: 80px;
+	padding-left: 60px;
 }
 
 .service-block .caption-box .title-box h4{
@@ -6709,7 +6720,7 @@ button:focus{
 
 .contact-section{
 	position: relative;
-	padding-top: 115px;
+/* 	padding-top: 115px; */
 }
 
 .contact-form{
@@ -7019,20 +7030,20 @@ button:focus{
 	position:relative;
 	text-align:center;
 	padding: 40px 0;
+	padding: 0;
 }
 
-.clients-section .sponsors-outer .image-box img{
-	max-width:100%;
-	width: auto;
-	height: auto;
-	margin: 0 auto;
-	-webkit-transition:all 300ms ease;
-	-ms-transition:all 300ms ease;
-	-o-transition:all 300ms ease;
-	-moz-transition:all 300ms ease;
-	transition:all 300ms ease;
+.clients-section .sponsors-outer .image-box img {
+    /* max-width: 100%; */
+    width: 120px;
+    height: auto;
+    margin: 0 auto;
+    -webkit-transition: all 300ms ease;
+    -ms-transition: all 300ms ease;
+    -o-transition: all 300ms ease;
+    -moz-transition: all 300ms ease;
+    transition: all 300ms ease;
 }
-
 .clients-section .sponsors-outer .image-box:hover img{
 	-webkit-transform: scale(1.2);
 	-moz-transform: scale(1.2);
@@ -14521,7 +14532,8 @@ h1{
 
 .page-id-285 .image-column {
     max-width: 800px;
-    margin: -160px auto 0;
+/*     margin: -160px auto 0; */
+	margin: -130px auto 0;
     width: 100%;
     background: #fff;
     padding: 30px 60px;
@@ -14587,9 +14599,9 @@ h1{
 }
 
 
-.main-menu .navigation .payonln {
+/* .main-menu .navigation .payonln {
 	display: none;
-}
+} */
 
 /* kritika */
 #sp_easy_accordion-1700470276 {width:100%}
@@ -14601,3 +14613,127 @@ h1{
 .slide-item .image-box img {
     height:250px
 }
+
+
+/* akash */
+footer .footer-column .footer-widget.gallery-widget .map-outer iframe {
+	width: 100%;
+}
+/* .service-detail-section .row {
+	flex-direction: column-reverse;
+} */
+/* .service-detail-section .sidebar-widget .service-cat-list {
+	display: flex;
+	margin-bottom: 0;
+} */
+.service-detail-section .sidebar-widget .service-cat-list a:before {
+	right: 8px;
+}
+/* .service-detail-section .sidebar-widget .mCSB_container {
+	margin-bottom: 0 !important;
+} */
+.service-detail-section .sidebar-widget .service-cat-list li {
+	flex: 0 0 auto;
+}
+.service-detail-section .sidebar-widget .mCSB_draggerContainer:hover .mCSB_dragger_bar {
+	height: 2px !important;
+}
+.service-detail-section .sidebar-widget .mCSB_draggerContainer:hover .mCSB_draggerRail {
+	height: 2px !important;
+	background-color: transparent !important;
+}
+.low_cnt {
+	display: flex;
+	align-items: center;
+}
+
+
+/* .main-header .sticky-header.slideInDown {
+	background-color: #000;
+}
+
+.main-header .sticky-header.slideInDown .navigation .menu-item a {
+	color: #fff;
+} */
+/* akash*/
+.upper-column.info-box.showhiderepair {
+	display: flex;
+}
+.upper-column.info-box.showhiderepair span {
+width:25px; display:inline-block;
+}
+
+
+.why-us-section .tabs-content .inner-box span {
+    font-size: 34px;
+}
+.why-us-section .tabs-content .inner-box h2 {
+    margin-top: 30px;
+}
+.why-us-section .tabs-content .inner-box a {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.certificates li { padding-right:10px}
+.page-id-308 .clients-section {display:none}
+.clients-section img {
+  filter: gray; /* IE6-9 */
+  -webkit-filter: grayscale(1); /* Google Chrome, Safari 6+ & Opera 15+ */
+  filter: grayscale(1); /* Microsoft Edge and Firefox 35+ */
+}
+.gallheading{
+text-align:center;
+}
+
+
+/* akash */
+
+.clients-section .sponsors-carousel .owl-item .image-box a {
+	display: flex;
+	align-items: center;
+	height: auto;
+}
+
+.clients-section .sponsors-carousel .owl-stage {
+	display: flex;
+	align-items: center;
+}
+
+.clients-section .sponsors-carousel .owl-item .image-box a img {
+	width: auto;
+	height: auto;
+}
+.clients-section .sponsors-outer h3 {
+	font-size: 24px;
+	margin-top: 0;
+	margin-bottom: 15px;
+}
+.clients-section .sponsors-carousel .owl-item .image-box {
+	padding-bottom: 0;
+}
+.sp-easy-accordion .sp-ea-single .ea-header a {
+	font-size: 17px !important;
+}
+.gallery-box .gallheading {
+	padding-bottom: 25px !important
+}
+.about-us form .contact-form .card-image img {
+	width: 250px;
+}
+.latest_section .contents p {
+	font-size: 24px;
+    margin: 50px 0;
+    text-align: center;
+	font-weight: 600;
+}
+.page-id-9 .contact-section {
+	padding-top: 75px;
+}
+.social-icon li a .fab {
+	font-family: "Font Awesome 6 Brands" !important;
+}
+.social-icon li a .fa-brands {
+	font-family: "Font Awesome 6 Brands" !important;
+}
+/* akash */

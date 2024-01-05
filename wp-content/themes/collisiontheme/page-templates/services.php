@@ -35,7 +35,7 @@ $allservices = new WP_Query(array('post_type'=>'ourservice','post_status'=>'publ
             <div class="row clearfix">
                 <!-- Service Block -->
                 <?php while($allservices->have_posts()):$allservices->the_post(); ?>
-                <div class="service-block col-lg-4 col-md-6 col-sm-6">
+                <div class="service-block col-lg-3 col-md-6 col-sm-6">
                     <div class="inner-box">
                         <div class="image-box">
                             <figure><img src="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt=""></figure>
@@ -53,6 +53,12 @@ $allservices = new WP_Query(array('post_type'=>'ourservice','post_status'=>'publ
                 </div>
             <?php endwhile;wp_reset_query(); ?>
 
+				<div class="col-12">
+					<ul class="certificates d-flex justify-content-center">
+						<li><img src="https://dwstaging.link/cms/infinitecollision/wp-content/uploads/2023/12/certificate2.jpg" alt="" class="img-fluid"/></li><li><img src="https://dwstaging.link/cms/infinitecollision/wp-content/uploads/2023/12/certificate1.jpg" alt="" class="img-fluid"/></li>
+						<li></li>
+					</ul>
+				</div>
             
             </div>
 
